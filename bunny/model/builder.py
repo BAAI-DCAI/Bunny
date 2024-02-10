@@ -29,8 +29,9 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
             bnb_4bit_quant_type='nf4'
         )
     else:
+        #TODO: phi-2 inference on tf16
         if model_type == 'phi-2':
-            kwargs['torch_dtype'] = torch.bfloat16
+            kwargs['torch_dtype'] = torch.bfloat16 # torch.float32 works too
         else:
             kwargs['torch_dtype'] = torch.float16
 
