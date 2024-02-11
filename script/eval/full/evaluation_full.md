@@ -63,7 +63,12 @@ For test set, you can submit the `json` response file to [submission_link](https
 
 ## VQAv2
 
-1. Download [COCO 2015 Test images](http://images.cocodataset.org/zips/test2015.zip) and put `test2015` under `eval/vqav2`.
+1. Download [COCO 2015 Test images](http://images.cocodataset.org/zips/test2015.zip) and put `test2015` under `eval/vqav2`. Then:
+
+   ```shell
+   tar -zxvf eval/vqav2/bunny_vqav2_mscoco_test2015.tar.gz -C eval/vqav2 && rm eval/vqav2/bunny_vqav2_mscoco_test2015.tar.gz && tar -zxvf eval/vqav2/bunny_vqav2_mscoco_test-dev2015.tar.gz -C eval/vqav2 && rm eval/vqav2/bunny_vqav2_mscoco_test-dev2015.tar.gz
+   ```
+
 2. Update `MODEL_TYPE` and `TARGET_DIR` accordingly.
 
 ```Shell
