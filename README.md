@@ -114,7 +114,7 @@ For LLMs, we support phi-1.5, stablelm-2 and phi-2.
 | ---------- | --------------- | ------------------------------------------------------------ |
 | phi-1.5    | phi-1_5_dev     | [susnato/phi-1_5_dev](https://huggingface.co/susnato/phi-1_5_dev) |
 | stablelm-2 | stablelm-2-1_6b | [stabilityai/stablelm-2-1_6b](https://huggingface.co/stabilityai/stablelm-2-1_6b) |
-| phi-2      | phi-2           | [Isaachhe/phi-2_dev](https://huggingface.co/Isaachhe/phi-2_dev) |
+| phi-2      | phi-2_dev           | [Isaachhe/phi-2_dev](https://huggingface.co/Isaachhe/phi-2_dev) |
 
 Note that there are many variants of above models.
 We build and test our code based on the exact versions mentioned above.
