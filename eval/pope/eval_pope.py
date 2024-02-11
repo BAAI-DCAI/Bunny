@@ -61,6 +61,7 @@ def eval_pope(answers, label_file):
     print('F1 score: {}'.format(f1))
     print('Yes ratio: {}'.format(yes_ratio))
     print('%.3f, %.3f, %.3f, %.3f, %.3f' % (f1, acc, precision, recall, yes_ratio))
+    return f1
 
 
 if __name__ == "__main__":
@@ -73,11 +74,17 @@ if __name__ == "__main__":
     questions = [json.loads(line) for line in open(args.question_file)]
     questions = {question['question_id']: question for question in questions}
     answers = [json.loads(q) for q in open(args.result_file)]
+
+    average_f1 = 0
     for file in os.listdir(args.annotation_dir):
         assert file.startswith('coco_pope_')
         assert file.endswith('.json')
         category = file[10:-5]
         cur_answers = [x for x in answers if questions[x['question_id']]['category'] == category]
         print('Category: {}, # samples: {}'.format(category, len(cur_answers)))
-        eval_pope(cur_answers, os.path.join(args.annotation_dir, file))
+        average_f1 += eval_pope(cur_answers, os.path.join(args.annotation_dir, file))
         print("====================================")
+
+    average_f1 /= len(os.listdir(args.annotation_dir))
+
+    print(f'Average F1 score: {average_f1}')

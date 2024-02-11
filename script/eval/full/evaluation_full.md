@@ -111,6 +111,8 @@ The responses and the scores can be found in `eval/scienceqa/results`.
 sh script/eval/full/pope.sh
 ```
 
+We report the averaged F1-score of three categories (random, popular and adversarial).
+
 ## MM-Vet
 
 1. Refer to [MM-Vet Github](https://github.com/yuweihao/MM-Vet?tab=readme-ov-file#evalute-your-model-on-mm-vet) to download the benchmark dataset and put `images` under `eval/mm-vet`.
