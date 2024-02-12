@@ -20,25 +20,25 @@ Bunny is a family of lightweight but powerful multimodal models. It offers multi
 
 * Evaluation
   
-| Checkpoint                                                                                   | MME$`^\text{P}`$ | MME$`^\text{C}`$ | MMB$`^\text{T}`$  | MMB$`^\text{D}`$  | SEED | MMMU | VQA$`^\text{v2}`$ | GQA  | SQA$`^\text{I}`$ |
-| -------------------------------------------------------------------------------------------- | :--------------: | :--------------: | :---------------: | :---------------: | :--: | :--: | :---------------: | :--: | :--------------: |
-| [bunny-phi-1.5-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-eva-lora)             | 1209.5           | 232.1            | 59.0              | 56.7              | 55.0 | 28.9 | 76.2              | 59.8 | 57.0             |
-| [bunny-stablelm-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-eva-lora)       | 1301.0           | 235.0            | 58.4              | 56.4              | 55.3 | 29.4 | 74.6              | 56.7 | 60.0             |
-| [bunny-phi-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-2-eva-lora)                 | 1329.0           | 257.5            | 66.4              | 66.6              | 60.7 | 32.2 | 77.8              | 61.0 | 68.1             |
-| [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora)       | 1237.0           | 231.1            | 61.3              | 58.1              | 56.4 | 28.9 | 77.6              | 60.4 | 61.8             |
-| [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) | 1366.8           | 236.1            | 65.1              | 62.8              | 58.8 | 29.8 | 78.9              | 60.9 | 61.1             |
-| **[bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora)**           | 1459.1           | 285.0            | 69.5              | 68.5              | 62.4 | 32.9 | 79.5              | 61.8 | 69.1             |
+| Checkpoint                                                   | MME$`^\text{P}`$ | MME$`^\text{C}`$ | MMB$`^\text{T}`$ | MMB$`^\text{D}`$ | SEED | MMMU$`^\text{V}`$ | MMMU$`^\text{T}`$ | VQA$`^\text{v2}`$ | GQA  | SQA$`^\text{I}`$ | POPE |
+| ------------------------------------------------------------ | :--------------: | :--------------: | :--------------: | :--------------: | :--: | :---------------: | :---------------: | :---------------: | :--: | :----------------: | :----: |
+| [bunny-phi-1.5-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-eva-lora) |      1213.7      |      278.9      |       59.0       |       56.7       | 56.4 | 30.0 |       28.4       |       76.5       | 60.4 | 58.2           | 86.1 |
+| [bunny-stablelm-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-eva-lora) |      1301.0      |      235.0       |       58.4       |       56.4       | 55.3 | 29.8 |       29.4        |       74.6        | 56.7 | 60.0             | 84.8 |
+| [bunny-phi-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-2-eva-lora) |      1421.0      |      285.4      |       66.4       |       66.6       | 62.2 | 35.9 |       32.6       |       78.9       | 62.3 | 69.1           | 87.1 |
+| [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) |      1230.0      |      237.5      |       61.3       |       58.1       | 57.7 | 30.0 |       29.1       |       78.0       | 61.1 | 61.3            | 85.8 |
+| [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) |      1366.8      |      236.1       |       65.1       |       62.8       | 58.8 | 29.9 |       29.8        |       78.9        | 60.9 | 61.1             | 85.9 |
+| **[bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora)** |      1488.8      |      289.3      |       69.5       |       68.5       | 62.5 | 38.2 |       33.0       |       79.8       | 62.5 | 70.9        | 86.8 |
 
 * Training details
   
 | Checkpoint                                                   | Vision Encoder                                               | LLM                                                          | Pretrain lr | Pretrain weights                                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | :---------: | ------------------------------------------------------------ |
-| [bunny-phi-1.5-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-eva-lora) | [EVA02_CLIP_L_336_psz14_s6B](https://huggingface.co/QuanSun/EVA-CLIP/blob/main/EVA02_CLIP_L_336_psz14_s6B.pt) | [susnato/phi-1_5_dev](https://huggingface.co/susnato/phi-1_5_dev) |    1e-3     | [bunny-pretrain-phi-1.5-eva](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-1.5-eva) |
+| [bunny-phi-1.5-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-eva-lora) | [EVA02_CLIP_L_336_psz14_s6B](https://huggingface.co/QuanSun/EVA-CLIP/blob/main/EVA02_CLIP_L_336_psz14_s6B.pt) | [microsoft/phi-1_5](https://huggingface.co/microsoft/phi-1_5) |    1e-3     | [bunny-pretrain-phi-1.5-eva](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-1.5-eva) |
 | [bunny-stablelm-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-eva-lora) | [EVA02_CLIP_L_336_psz14_s6B](https://huggingface.co/QuanSun/EVA-CLIP/blob/main/EVA02_CLIP_L_336_psz14_s6B.pt) | [stabilityai/stablelm-2-1_6b](https://huggingface.co/stabilityai/stablelm-2-1_6b) |    1e-3     | [bunny-pretrain-stablelm-2-eva](https://huggingface.co/BoyaWu10/bunny-pretrain-stablelm-2-eva) |
-| [bunny-phi-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-2-eva-lora) | [EVA02_CLIP_L_336_psz14_s6B](https://huggingface.co/QuanSun/EVA-CLIP/blob/main/EVA02_CLIP_L_336_psz14_s6B.pt) | [Isaachhe/phi-2_dev](https://huggingface.co/Isaachhe/phi-2_dev) |    5e-5     | [bunny-pretrain-phi-2-eva](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-2-eva) |
-| [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [susnato/phi-1_5_dev](https://huggingface.co/susnato/phi-1_5_dev) |    5e-4     | [bunny-pretrain-phi-1.5-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-1.5-siglip) |
+| [bunny-phi-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-2-eva-lora) | [EVA02_CLIP_L_336_psz14_s6B](https://huggingface.co/QuanSun/EVA-CLIP/blob/main/EVA02_CLIP_L_336_psz14_s6B.pt) | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2)    |    5e-5     | [bunny-pretrain-phi-2-eva](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-2-eva) |
+| [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [microsoft/phi-1_5](https://huggingface.co/microsoft/phi-1_5) |    5e-4     | [bunny-pretrain-phi-1.5-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-1.5-siglip) |
 | [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [stabilityai/stablelm-2-1_6b](https://huggingface.co/stabilityai/stablelm-2-1_6b) |    5e-4     | [bunny-pretrain-stablelm-2-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-stablelm-2-siglip) |
-| **[bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora)** | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [Isaachhe/phi-2_dev](https://huggingface.co/Isaachhe/phi-2_dev) |    5e-4     | [bunny-pretrain-phi-2-siglip](https://huggingface.co/BAAI/bunny-pretrain-phi-2-siglip) |
+| **[bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora)** | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2)    |    5e-4     | [bunny-pretrain-phi-2-siglip](https://huggingface.co/BAAI/bunny-pretrain-phi-2-siglip) |
 
 ## Install
 
@@ -112,9 +112,9 @@ For LLMs, we support phi-1.5, stablelm-2 and phi-2.
 
 | MODEL_TYPE | LLM             | Download Link                                                |
 | ---------- | --------------- | ------------------------------------------------------------ |
-| phi-1.5    | phi-1_5_dev     | [susnato/phi-1_5_dev](https://huggingface.co/susnato/phi-1_5_dev) |
+| phi-1.5    | phi-1_5     | [microsoft/phi-1_5](https://huggingface.co/microsoft/phi-1_5) |
 | stablelm-2 | stablelm-2-1_6b | [stabilityai/stablelm-2-1_6b](https://huggingface.co/stabilityai/stablelm-2-1_6b) |
-| phi-2      | phi-2_dev           | [Isaachhe/phi-2_dev](https://huggingface.co/Isaachhe/phi-2_dev) |
+| phi-2      | phi-2           | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2) |
 
 Note that there are many variants of above models.
 We build and test our code based on the exact versions mentioned above.
