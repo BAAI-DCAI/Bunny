@@ -6,7 +6,7 @@
 
 📖 Technical report (coming soon) | 🤗 [Models](#model-zoo) | 🐰 [Demo](http://bunny.dataoptim.org)
 
-Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like EVA-CLIP, SigLIP and language backbones, including Phi-1.5, StableLM-2 and Phi-2. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our Bunny-3B model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLM frameworks (7B), and even achieves performance on par with 13B models.
+Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like EVA-CLIP, SigLIP and language backbones, including Phi-1.5, StableLM-2 and Phi-2. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our Bunny-3B model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
 
 ![comparison](comparison.png)
 
@@ -14,7 +14,7 @@ Bunny is a family of lightweight but powerful multimodal models. It offers multi
 
 * ⏳ Bunny training data.
 * ⏳ Bunny technical report.
-* 2024.2.7 🔥  **Bunny is out!** Bunny-3B built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLM frameworks (7B), and even achieves performance on par with LLaVA-13B!
+* 2024.2.7 🔥  **Bunny is released!** Bunny-3B built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with LLaVA-13B!
 
 ## Model Zoo
 
