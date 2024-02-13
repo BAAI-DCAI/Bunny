@@ -273,6 +273,10 @@ For full-parameter tuning models, see [evaluation_full.md](script/eval/full/eval
 
 For LoRA tuning models, see [evaluation_lora.md](script/eval/lora/evaluation_lora.md).
 
+## License
+This project utilizes certain datasets and checkpoints that are subject to their respective original licenses. Users must comply with all terms and conditions of these original licenses.
+The content of this project itself is licensed under the [Apache license 2.0](./LICENSE).
+
 ## Acknowledgement
 
 We build our project based on [LLaVA](https://github.com/haotian-liu/LLaVA): Large Language and Vision Assistant.
