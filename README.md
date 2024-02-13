@@ -100,7 +100,7 @@ Bunny is trained on 8 A100 GPUs. To train on fewer GPUs, you can reduce the `per
 
 Currently, we support several vision encoders and LLMs.
 
-For vision encoders, we supprt CLIP, EVA-CLIP and SigLIP.
+For vision encoders, we support CLIP, EVA-CLIP and SigLIP.
 
 | Vision Encoders            | Download Link                                                |
 | -------------------------- | ------------------------------------------------------------ |
