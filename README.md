@@ -22,12 +22,12 @@ Bunny is a family of lightweight but powerful multimodal models. It offers multi
   
 | Checkpoint                                                   | MME$`^\text{P}`$ | MME$`^\text{C}`$ | MMB$`^\text{T}`$ | MMB$`^\text{D}`$ | SEED | MMMU$`^\text{V}`$ | MMMU$`^\text{T}`$ | VQA$`^\text{v2}`$ | GQA  | SQA$`^\text{I}`$ | POPE |
 | ------------------------------------------------------------ | :--------------: | :--------------: | :--------------: | :--------------: | :--: | :---------------: | :---------------: | :---------------: | :--: | :----------------: | :----: |
-| [bunny-phi-1.5-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-eva-lora) |      1213.7      |      278.9      |       59.0       |       56.7       | 56.4 | 30.0 |       28.4       |       76.5       | 60.4 | 58.2           | 86.1 |
+| [bunny-phi-1.5-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-eva-lora) |      1213.7      |      278.9      |       60.9       |       56.8       | 56.4 | 30.0 |       28.4       |       76.5       | 60.4 | 58.2           | 86.1 |
 | [bunny-stablelm-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-eva-lora) |      1301.0      |      235.0       |       58.4       |       56.4       | 55.3 | 29.8 |       29.4        |       74.6        | 56.7 | 60.0             | 84.8 |
-| [bunny-phi-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-2-eva-lora) |      1421.0      |      285.4      |       66.4       |       66.6       | 62.2 | 35.9 |       32.6       |       78.9       | 62.3 | 69.1           | 87.1 |
-| [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) |      1230.0      |      237.5      |       61.3       |       58.1       | 57.7 | 30.0 |       29.1       |       78.0       | 61.1 | 61.3            | 85.8 |
+| [bunny-phi-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-2-eva-lora) |      1421.0      |      285.4      |       68.6       |       67.4       | 62.2 | 35.9 |       32.6       |       78.9       | 62.3 | 69.1           | 87.1 |
+| [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) |      1230.0      |      237.5      |       61.2       |       59.7       | 57.7 | 30.0 |       29.1       |       78.0       | 61.1 | 61.3            | 85.8 |
 | [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) |      1366.8      |      236.1       |       65.1       |       62.8       | 58.8 | 29.9 |       29.8        |       78.9        | 60.9 | 61.1             | 85.9 |
-| **[bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora)** |      1488.8      |      289.3      |       69.5       |       68.5       | 62.5 | 38.2 |       33.0       |       79.8       | 62.5 | 70.9        | 86.8 |
+| **[bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora)** |      1488.8      |      289.3      |       69.2       |       68.6       | 62.5 | 38.2 |       33.0       |       79.8       | 62.5 | 70.9        | 86.8 |
 
 * Training details
   
