@@ -345,8 +345,8 @@ def build_demo(embed_mode):
 
                 cur_dir = os.path.dirname(os.path.abspath(__file__))
                 gr.Examples(examples=[
-                    [f"{cur_dir}/examples/demo_3.png", "What is the astronaut holding in his hand?"],
-                    [f"{cur_dir}/examples/demo_4.png", "Why is the image funny?"],
+                    [f"{cur_dir}/examples/example_1.png", "What is the astronaut holding in his hand?"],
+                    [f"{cur_dir}/examples/example_2.png", "Why is the image funny?"],
                 ], inputs=[imagebox, textbox])
 
                 with gr.Accordion("Parameters", open=False) as parameter_row:
