@@ -7,7 +7,7 @@ mkdir -p ./checkpoints-pretrain/$OUTPUT_DIR
 
 deepspeed bunny/train/train.py \
     --deepspeed ./script/deepspeed/zero2.json \
-    --model_name_or_path /path/to/base_model \
+    --model_name_or_path /path/to/base_llm_model \
     --model_type $MODEL_TYPE \
     --version plain \
     --data_path ./data/pretrain/bunny_pretrain_laion_2m.json \

@@ -4,8 +4,8 @@ You can use `script/merge_lora_weights.py` to merge the LoRA weights and base LL
 
 ```Shell
 python script/merge_lora_weights.py \
-	--model-path /path/to/lora_weights \
-	--model-base /path/to/base_model \
+	--model-path /path/to/bunny_lora_weights \
+	--model-base /path/to/base_llm_model \
 	--model-type phi-2 (or stablelm-2 or phi-1.5) \
 	--save-model-path /path/to/merged_model
 ```

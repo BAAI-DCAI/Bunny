@@ -9,7 +9,7 @@ mkdir -p ./checkpoints-$MODEL_TYPE/$OUTPUT_DIR
 
 deepspeed bunny/train/train.py \
     --deepspeed ./script/deepspeed/zero3.json \
-    --model_name_or_path /path/to/base_model \
+    --model_name_or_path /path/to/base_llm_model \
     --model_type $MODEL_TYPE \
     --version bunny \
     --data_path ./data/finetune/bunny_695k.json \

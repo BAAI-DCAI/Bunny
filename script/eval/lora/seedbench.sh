@@ -7,7 +7,7 @@ CHUNKS=${#GPULIST[@]}
 
 
 MODEL_TYPE=phi-2
-MODEL_BASE=/path/to/base_model
+MODEL_BASE=/path/to/base_llm_model
 TARGET_DIR=bunny-lora-phi-2
 
 for IDX in $(seq 0 $((CHUNKS-1))); do

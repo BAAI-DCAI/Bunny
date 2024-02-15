@@ -203,7 +203,7 @@ More models will be supported in the future!
         	--controller http://localhost:10000 \
         	--port 40000 \
         	--worker http://localhost:40000 \
-        	--model-path /path/to/your/model \
+        	--model-path /path/to/bunny/model \
         	--model-type phi-2 (or stablelm-2 or phi-1.5)
         ```
 
@@ -213,8 +213,8 @@ More models will be supported in the future!
         
         ```Shell
         python script/merge_lora_weights.py \
-        	--model-path /path/to/lora_weights \
-        	--model-base /path/to/base_model \
+        	--model-path /path/to/bunny_lora_weights \
+        	--model-base /path/to/base_llm_model \
         	--model-type phi-2 (or stablelm-2 or phi-1.5) \
         	--save-model-path /path/to/merged_model
         ```
@@ -226,8 +226,8 @@ More models will be supported in the future!
         	--controller http://localhost:10000 \
         	--port 40000 \
         	--worker http://localhost:40000 \
-        	--model-path /path/to/your/model \
-        	--model-base /path/to/base_model \
+        	--model-path /path/to/bunny_lora_weights \
+        	--model-base /path/to/base_llm_model \
         	--model-type phi-2 (or stablelm-2 or phi-1.5)
         ```
 
@@ -240,7 +240,7 @@ For CLI-based inference without using the Gradio interface, use the following co
 
   ```shell
   python -m bunny.serve.cli \
-  	--model-path /path/to/your/model \
+  	--model-path /path/to/bunny/model \
   	--model-type phi-2 (or stablelm-2 or phi-1.5) \
   	--image-file /path/to/the/test/image
   ```
@@ -251,8 +251,8 @@ For CLI-based inference without using the Gradio interface, use the following co
 
   ```Shell
   python script/merge_lora_weights.py \
-  	--model-path /path/to/lora_weights \
-  	--model-base /path/to/base_model \
+  	--model-path /path/to/bunny_lora_weights \
+  	--model-base /path/to/base_llm_model \
   	--model-type phi-2 (or stablelm-2 or phi-1.5) \
   	--save-model-path /path/to/merged_model
   ```
@@ -261,8 +261,8 @@ For CLI-based inference without using the Gradio interface, use the following co
 
   ```shell
   python -m bunny.serve.cli \
-  	--model-path /path/to/your/model \
-  	--model-base /path/to/base_model \
+  	--model-path /path/to/bunny_lora_weights \
+  	--model-base /path/to/base_llm_model \
   	--model-type phi-2 (or stablelm-2 or phi-1.5) \
   	--image-file /path/to/the/test/image
   ```

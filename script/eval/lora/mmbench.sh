@@ -2,7 +2,7 @@
 
 SPLIT="MMBench_DEV_EN_legacy"
 MODEL_TYPE=phi-2
-MODEL_BASE=/path/to/base_model
+MODEL_BASE=/path/to/base_llm_model
 TARGET_DIR=bunny-lora-phi-2
 
 
