@@ -191,45 +191,45 @@ More models will be supported in the future!
 
   Now, you can open the web interface with **the URL printed on the screen**. You may notice that there is no model in the model list. Do not worry, as we have not launched any model worker yet. It will be automatically updated when you launch a model worker.
 
-  * Launching Model Workers
+* Launching Model Workers
 
-    Model workers handle the processing of model inferences. Configure each worker with the appropriate model and start it.
+  Model workers handle the processing of model inferences. Configure each worker with the appropriate model and start it.
 
-    * For full-parameter tuning models
-  
-        ```shell
-        python -m bunny.serve.model_worker \
-        	--host 0.0.0.0 \
-        	--controller http://localhost:10000 \
-        	--port 40000 \
-        	--worker http://localhost:40000 \
-        	--model-path /path/to/bunny/model \
-        	--model-type phi-2 (or stablelm-2 or phi-1.5)
-        ```
+  * For full-parameter tuning models
 
-    * For LoRA tuning models
+      ```shell
+      python -m bunny.serve.model_worker \
+        --host 0.0.0.0 \
+        --controller http://localhost:10000 \
+        --port 40000 \
+        --worker http://localhost:40000 \
+        --model-path /path/to/bunny/model \
+        --model-type phi-2 (or stablelm-2 or phi-1.5)
+      ```
 
-        You can use `script/merge_lora_weights.py` to merge the LoRA weights and base LLM, and use it as above.
-        
-        ```Shell
-        python script/merge_lora_weights.py \
-        	--model-path /path/to/bunny_lora_weights \
-        	--model-base /path/to/base_llm_model \
-        	--model-type phi-2 (or stablelm-2 or phi-1.5) \
-        	--save-model-path /path/to/merged_model
-        ```
-        Or you can use it without merging as below.
-        
-        ```shell
-        python -m bunny.serve.model_worker \
-        	--host 0.0.0.0 \
-        	--controller http://localhost:10000 \
-        	--port 40000 \
-        	--worker http://localhost:40000 \
-        	--model-path /path/to/bunny_lora_weights \
-        	--model-base /path/to/base_llm_model \
-        	--model-type phi-2 (or stablelm-2 or phi-1.5)
-        ```
+  * For LoRA tuning models
+
+      You can use `script/merge_lora_weights.py` to merge the LoRA weights and base LLM, and use it as above.
+      
+      ```Shell
+      python script/merge_lora_weights.py \
+        --model-path /path/to/bunny_lora_weights \
+        --model-base /path/to/base_llm_model \
+        --model-type phi-2 (or stablelm-2 or phi-1.5) \
+        --save-model-path /path/to/merged_model
+      ```
+      Or you can use it without merging as below.
+      
+      ```shell
+      python -m bunny.serve.model_worker \
+        --host 0.0.0.0 \
+        --controller http://localhost:10000 \
+        --port 40000 \
+        --worker http://localhost:40000 \
+        --model-path /path/to/bunny_lora_weights \
+        --model-base /path/to/base_llm_model \
+        --model-type phi-2 (or stablelm-2 or phi-1.5)
+      ```
 
 
 ### CLI Inference (Without Gradio Interface)
