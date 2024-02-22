@@ -40,6 +40,61 @@ Bunny is a family of lightweight but powerful multimodal models. It offers multi
 | [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [stabilityai/stablelm-2-1_6b](https://huggingface.co/stabilityai/stablelm-2-1_6b) |    5e-4     | [bunny-pretrain-stablelm-2-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-stablelm-2-siglip) |
 | **[bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora)** | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2)    |    5e-4     | [bunny-pretrain-phi-2-siglip](https://huggingface.co/BAAI/bunny-pretrain-phi-2-siglip) |
 
+## Quickstart
+
+Here we show a code snippet to show you how to use the [merged weights](https://huggingface.co/BAAI/bunny-phi-2-siglip) of [bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora) with transformers:
+
+```python
+import torch
+import transformers
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from PIL import Image
+import warnings
+
+# disable some warnings
+transformers.logging.set_verbosity_error()
+transformers.logging.disable_progress_bar()
+warnings.filterwarnings('ignore')
+
+# set device
+torch.set_default_device('cpu')  # or 'cuda'
+
+# create model
+model = AutoModelForCausalLM.from_pretrained(
+    'BAAI/bunny-phi-2-siglip',
+    torch_dtype=torch.float16,
+    device_map='auto',
+    trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(
+    'BAAI/bunny-phi-2-siglip',
+    trust_remote_code=True)
+
+# text prompt
+prompt = 'Why is the image funny?'
+text = f"A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. USER: <image>\n{prompt} ASSISTANT:"
+text_chunks = [tokenizer(chunk).input_ids for chunk in text.split('<image>')]
+input_ids = torch.tensor(text_chunks[0] + [-200] + text_chunks[1], dtype=torch.long).unsqueeze(0)
+
+# image
+image = Image.open('example_2.png')
+image_tensor = model.process_images([image], model.config).to(dtype=model.dtype)
+
+# generate
+output_ids = model.generate(
+    input_ids,
+    images=image_tensor,
+    max_new_tokens=100,
+    use_cache=True)[0]
+
+print(tokenizer.decode(output_ids[input_ids.shape[1]:], skip_special_tokens=True).strip())
+```
+
+Before running the snippet, you need to install the following dependencies:
+
+```shell
+pip install torch transformers accelerate
+```
+
 ## Install
 
 * CUDA and cuDNN
