@@ -75,7 +75,7 @@ text = f"A chat between a curious user and an artificial intelligence assistant.
 text_chunks = [tokenizer(chunk).input_ids for chunk in text.split('<image>')]
 input_ids = torch.tensor(text_chunks[0] + [-200] + text_chunks[1], dtype=torch.long).unsqueeze(0)
 
-# image
+# image, sample images can be found in https://huggingface.co/BAAI/bunny-phi-2-siglip/tree/main/images
 image = Image.open('example_2.png')
 image_tensor = model.process_images([image], model.config).to(dtype=model.dtype)
 
