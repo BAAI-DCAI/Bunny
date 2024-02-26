@@ -102,7 +102,7 @@ The model with the best performance is denoted as Bunny-v1.0-3B or bunny-phi-2-s
 
 * CUDA and cuDNN
 
-  We use CUDA 11.8 and cuDNN 8.7.0. We actually use the CUDA docker by NVIDIA: `docker pull nvcr.io/nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04`
+  We use CUDA 11.8 and cuDNN 8.7.0. We actually use the CUDA docker by NVIDIA: `docker pull nvcr.io/nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04`. CUDA 12 is fine, too.
 
 * Create a conda virtual environment and activate it:
 
@@ -115,7 +115,7 @@ The model with the best performance is denoted as Bunny-v1.0-3B or bunny-phi-2-s
 
   ```shell
   pip install --upgrade pip  # enable PEP 660 support
-  pip install transformers==4.36.2
+  pip install transformers
   pip install torch torchvision xformers --index-url https://download.pytorch.org/whl/cu118
   ```
 
