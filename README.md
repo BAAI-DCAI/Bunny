@@ -4,9 +4,9 @@
   <img src="./icon.png" alt="Logo" width="350">
 </p>
 
-📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Bunny-3B](https://huggingface.co/BAAI/bunny-phi-2-siglip) | 🐰 [Demo](http://bunny.dataoptim.org)
+📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1.0-3B) | 🐰 [Demo](http://bunny.dataoptim.org)
 
-Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like EVA-CLIP, SigLIP and language backbones, including Phi-1.5, StableLM-2 and Phi-2. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our Bunny-3B model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
+Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like EVA-CLIP, SigLIP and language backbones, including Phi-1.5, StableLM-2 and Phi-2. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our Bunny-v1.0-3B model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
 
 ![comparison](comparison.png)
 
@@ -14,11 +14,11 @@ Bunny is a family of lightweight but powerful multimodal models. It offers multi
 
 * ⏳ Bunny training data.
 * 2024.2.20 🔥 **Bunny technical report is ready!** Check more details about Bunny [here](https://arxiv.org/abs/2402.11530)!
-* 2024.2.7 🔥 **Bunny is released!** Bunny-3B built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with LLaVA-13B!
+* 2024.2.7 🔥 **Bunny is released!** Bunny-v1.0-3B built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with LLaVA-13B!
 
 ## Quickstart
 
-Here we show a code snippet to show you how to use [Bunny-3B](https://huggingface.co/BAAI/bunny-phi-2-siglip) with transformers:
+Here we show a code snippet to show you how to use [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1.0-3B) with transformers:
 
 ```python
 import torch
@@ -37,12 +37,12 @@ torch.set_default_device('cpu')  # or 'cuda'
 
 # create model
 model = AutoModelForCausalLM.from_pretrained(
-    'BAAI/bunny-phi-2-siglip',
+    'BAAI/Bunny-v1.0-3B',
     torch_dtype=torch.float16,
     device_map='auto',
     trust_remote_code=True)
 tokenizer = AutoTokenizer.from_pretrained(
-    'BAAI/bunny-phi-2-siglip',
+    'BAAI/Bunny-v1.0-3B',
     trust_remote_code=True)
 
 # text prompt
@@ -51,7 +51,7 @@ text = f"A chat between a curious user and an artificial intelligence assistant.
 text_chunks = [tokenizer(chunk).input_ids for chunk in text.split('<image>')]
 input_ids = torch.tensor(text_chunks[0] + [-200] + text_chunks[1], dtype=torch.long).unsqueeze(0)
 
-# image, sample images can be found in https://huggingface.co/BAAI/bunny-phi-2-siglip/tree/main/images
+# image, sample images can be found in https://huggingface.co/BAAI/Bunny-v1.0-3B/tree/main/images
 image = Image.open('example_2.png')
 image_tensor = model.process_images([image], model.config).to(dtype=model.dtype)
 
@@ -82,9 +82,9 @@ pip install torch transformers accelerate
 | [bunny-phi-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-2-eva-lora) |      1421.0      |      285.4      |       68.6       |       67.4       | 62.2 | 35.9 |       32.6       |       78.9       | 62.3 | 69.1           | 87.1 |
 | [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) |      1230.0      |      237.5      |       61.2       |       59.7       | 57.7 | 30.0 |       29.1       |       78.0       | 61.1 | 61.3            | 85.8 |
 | [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) |      1366.8      |      236.1       |       65.1       |       62.8       | 58.8 | 29.9 |       29.8        |       78.9        | 60.9 | 61.1             | 85.9 |
-| **[bunny-phi-2-siglip](https://huggingface.co/BAAI/bunny-phi-2-siglip)** |      1488.8      |      289.3      |       69.2       |       68.6       | 62.5 | 38.2 |       33.0       |       79.8       | 62.5 | 70.9        | 86.8 |
+| **[Bunny-v1.0-3B/bunny-phi-2-siglip](https://huggingface.co/BAAI/Bunny-v1.0-3B)** |      1488.8      |      289.3      |       69.2       |       68.6       | 62.5 | 38.2 |       33.0       |       79.8       | 62.5 | 70.9        | 86.8 |
 
-The model with the best performance, denoted as Bunny-3B, refers to bunny-phi-2-siglip, whose merged weights can be found [here](https://huggingface.co/BAAI/bunny-phi-2-siglip) and the LoRA weights can be found [here](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora).
+The model with the best performance is denoted as Bunny-v1.0-3B or bunny-phi-2-siglip, whose merged weights can be found [here](https://huggingface.co/BAAI/Bunny-v1.0-3B) and the LoRA weights can be found [here](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora).
 
 * Training details
   
