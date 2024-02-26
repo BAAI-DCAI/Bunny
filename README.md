@@ -4,7 +4,7 @@
   <img src="./icon.png" alt="Logo" width="350">
 </p>
 
-📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1.0-3B) | 🐰 [Demo](http://bunny.dataoptim.org)
+📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1.0-3B) ([ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B), [WiseModel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B)) | 🐰 [Demo](http://bunny.dataoptim.org)
 
 Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like EVA-CLIP, SigLIP and language backbones, including Phi-1.5, StableLM-2 and Phi-2. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our Bunny-v1.0-3B model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
 
