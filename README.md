@@ -68,7 +68,7 @@ print(tokenizer.decode(output_ids[input_ids.shape[1]:], skip_special_tokens=True
 Before running the snippet, you need to install the following dependencies:
 
 ```shell
-pip install torch transformers accelerate
+pip install torch transformers accelerate pillow
 ```
 
 ## Model Zoo
