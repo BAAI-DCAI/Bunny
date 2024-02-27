@@ -4,7 +4,7 @@
   <img src="./icon.png" alt="Logo" width="350">
 </p>
 
-📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) ([ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B), [WiseModel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B)) | 🐰 [Demo](http://bunny.dataoptim.org)
+📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) | 🤖 [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B) | 🧠 [WiseModel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B) | 🐰 [Demo](http://bunny.dataoptim.org)
 
 Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like EVA-CLIP, SigLIP and language backbones, including Phi-1.5, StableLM-2 and Phi-2. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our Bunny-v1.0-3B model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
 
@@ -18,7 +18,9 @@ Bunny is a family of lightweight but powerful multimodal models. It offers multi
 
 ## Quickstart
 
-Here we show a code snippet to show you how to use [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) with transformers:
+### HuggingFace transformers
+
+Here we show a code snippet to show you how to use [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) with HuggingFace transformers:
 
 ```python
 import torch
@@ -69,6 +71,64 @@ Before running the snippet, you need to install the following dependencies:
 
 ```shell
 pip install torch transformers accelerate pillow
+```
+
+### ModelScope
+
+We advise users especially those in mainland China to use ModelScope.
+`snapshot_download` can help you solve issues concerning downloading checkpoints.
+
+```python
+import torch
+import transformers
+from modelscope import AutoTokenizer, AutoModelForCausalLM
+from modelscope.hub.snapshot_download import snapshot_download
+from PIL import Image
+import warnings
+
+# disable some warnings
+transformers.logging.set_verbosity_error()
+transformers.logging.disable_progress_bar()
+warnings.filterwarnings('ignore')
+
+# set device
+torch.set_default_device('cpu')  # or 'cuda'
+
+# create model
+snapshot_download(model_id='thomas/siglip-so400m-patch14-384')
+model = AutoModelForCausalLM.from_pretrained(
+    'BAAI/Bunny-v1.0-3B',
+    torch_dtype=torch.float16,
+    device_map='auto',
+    trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(
+    'BAAI/Bunny-v1.0-3B',
+    trust_remote_code=True)
+
+# text prompt
+prompt = 'Why is the image funny?'
+text = f"A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. USER: <image>\n{prompt} ASSISTANT:"
+text_chunks = [tokenizer(chunk).input_ids for chunk in text.split('<image>')]
+input_ids = torch.tensor(text_chunks[0] + [-200] + text_chunks[1], dtype=torch.long).unsqueeze(0)
+
+# image, sample images can be found in images folder on https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B/files
+image = Image.open('example_2.png')
+image_tensor = model.process_images([image], model.config).to(dtype=model.dtype)
+
+# generate
+output_ids = model.generate(
+    input_ids,
+    images=image_tensor,
+    max_new_tokens=100,
+    use_cache=True)[0]
+
+print(tokenizer.decode(output_ids[input_ids.shape[1]:], skip_special_tokens=True).strip())
+```
+
+Before running the snippet, you need to install the following dependencies:
+
+```shell
+pip install torch modelscope transformers accelerate pillow
 ```
 
 ## Model Zoo
