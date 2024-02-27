@@ -75,8 +75,11 @@ pip install torch transformers accelerate pillow
 
 ### ModelScope
 
-We advise users especially those in mainland China to use ModelScope.
+We advise users especially those in Chinese mainland to use ModelScope.
 `snapshot_download` can help you solve issues concerning downloading checkpoints.
+
+<details>
+<summary>Expand to see the snippet</summary>
 
 ```python
 import torch
@@ -130,6 +133,8 @@ Before running the snippet, you need to install the following dependencies:
 ```shell
 pip install torch modelscope transformers accelerate pillow
 ```
+
+</details>
 
 ## Model Zoo
 
