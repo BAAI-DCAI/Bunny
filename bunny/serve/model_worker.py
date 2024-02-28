@@ -54,7 +54,6 @@ class ModelWorker:
 
         self.device = device
         logger.info(f"Loading the model {self.model_name} on worker {worker_id} ...")
-        transformers.logging.set_verbosity_error()
         transformers.logging.disable_progress_bar()
         self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
             model_path, model_base, self.model_name, model_type, load_8bit, load_4bit, device=self.device)

@@ -1,10 +1,11 @@
 import os
 import warnings
-
-warnings.filterwarnings("ignore")
-
-from transformers import AutoTokenizer, AutoConfig, BitsAndBytesConfig
 import torch
+
+from transformers import AutoTokenizer, AutoConfig, BitsAndBytesConfig, logging
+
+logging.set_verbosity_error()
+
 from bunny.model import *
 
 
@@ -121,7 +122,7 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
     else:
         context_len = 2048
 
-    if model.config.pad_token_id is None:
-        model.config.pad_token_id = model.config.eos_token_id
+    if model.generation_config.pad_token_id is None:
+        model.generation_config.pad_token_id = model.generation_config.eos_token_id
 
     return tokenizer, model, image_processor, context_len
