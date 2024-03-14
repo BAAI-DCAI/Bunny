@@ -11,7 +11,7 @@ from bunny.model import *
 
 def load_pretrained_model(model_path, model_base, model_name, model_type, load_8bit=False, load_4bit=False,
                           device_map="auto", device="cuda", **kwargs):
-    if model_type not in {'phi-1.5', 'phi-2', 'stablelm-2'}:
+    if model_type not in {'phi-1.5', 'phi-2', 'stablelm-2', 'qwen1.5-1.8b'}:
         raise ValueError(f"Unknown Model Type {model_type}")
 
     kwargs = {"device_map": device_map, **kwargs}
@@ -48,6 +48,10 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True, trust_remote_code=True)
             model = BunnyStableLMForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True,
                                                              config=lora_cfg_pretrained, **kwargs)
+        elif model_type == 'qwen1.5-1.8b':
+            tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)
+            model = BunnyQwenForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True, config=lora_cfg_pretrained,
+                                                         **kwargs)
 
         token_num, tokem_dim = model.lm_head.out_features, model.lm_head.in_features
         if model.lm_head.weight.shape[0] != token_num:
@@ -97,6 +101,10 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True, trust_remote_code=True)
             model = BunnyStableLMForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True,
                                                              config=cfg_pretrained, **kwargs)
+        elif model_type == 'qwen1.5-1.8b':
+            tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)
+            model = BunnyQwenForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True, config=cfg_pretrained,
+                                                         **kwargs)
 
         mm_projector_weights = torch.load(os.path.join(model_path, 'mm_projector.bin'), map_location='cpu')
         mm_projector_weights = {k: v.to(torch.float16) for k, v in mm_projector_weights.items()}
@@ -108,6 +116,9 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
         elif model_type == 'stablelm-2':
             tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True, trust_remote_code=True)
             model = BunnyStableLMForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
+        elif model_type == 'qwen1.5-1.8b':
+            tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
+            model = BunnyQwenForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
 
     model.resize_token_embeddings(len(tokenizer))
 
