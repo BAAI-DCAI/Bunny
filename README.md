@@ -4,13 +4,15 @@
   <img src="./icon.png" alt="Logo" width="350">
 </p>
 
-📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) | 🤖 [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B) | 🧠 [WiseModel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B) | 🤗 [Data](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) | 🤖 [Data](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data) | 🐰 [Demo](https://wisemodel.cn/space/baai/Bunny)
+📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Model](https://huggingface.co/BAAI/Bunny-v1_0-3B) | 🤖 [Model](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B) | 🧠 [Model](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B) | 🤗 [Data](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) | 🤖 [Data](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data) | 🐰 [Demo](https://wisemodel.cn/space/baai/Bunny)
 
-Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like EVA-CLIP, SigLIP and language backbones, including Phi-1.5, StableLM-2 and Phi-2. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our Bunny-v1.0-3B model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
+Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like EVA-CLIP, SigLIP and language backbones, including Phi-1.5, StableLM-2, Qwen1.5 and Phi-2. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our Bunny-v1.0-3B model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
 
 ![comparison](comparison.png)
 
 ## News and Updates
+
+* 2024.03.15 🔥 **Bunny-v1.0-2B-zh, focusing on Chinese, is released!** It is built upon SigLIP and Qwen1.5-1.8B. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh) or [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-2B-zh/summary)!
 
 * 2024.03.06 🔥 **Bunny training data is released!** Check more details about Bunny-v1.0-data in [HuggingFace](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) or [ModelScope](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data)!
 * 2024.02.20 🔥 **Bunny technical report is ready!** Check more details about Bunny [here](https://arxiv.org/abs/2402.11530)!
@@ -20,8 +22,13 @@ Bunny is a family of lightweight but powerful multimodal models. It offers multi
 
 ### HuggingFace transformers
 
-Here we show a code snippet to show you how to use [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) with HuggingFace transformers:
+Here we show a code snippet to show you how to use [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) and [Bunny-v1.0-2B-zh](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh) with HuggingFace transformers.
 
+Before running the snippet, you need to install the following dependencies:
+
+```shell
+pip install torch transformers accelerate pillow
+```
 ```python
 import torch
 import transformers
@@ -37,14 +44,15 @@ warnings.filterwarnings('ignore')
 # set device
 torch.set_default_device('cpu')  # or 'cuda'
 
+model_name = 'BAAI/Bunny-v1_0-3B' # or 'BAAI/Bunny-v1_0-2B-zh'
 # create model
 model = AutoModelForCausalLM.from_pretrained(
-    'BAAI/Bunny-v1_0-3B',
+    model_name,
     torch_dtype=torch.float16,
     device_map='auto',
     trust_remote_code=True)
 tokenizer = AutoTokenizer.from_pretrained(
-    'BAAI/Bunny-v1_0-3B',
+    model_name,
     trust_remote_code=True)
 
 # text prompt
@@ -67,12 +75,6 @@ output_ids = model.generate(
 print(tokenizer.decode(output_ids[input_ids.shape[1]:], skip_special_tokens=True).strip())
 ```
 
-Before running the snippet, you need to install the following dependencies:
-
-```shell
-pip install torch transformers accelerate pillow
-```
-
 ### ModelScope
 
 We advise users especially those in Chinese mainland to use ModelScope.
@@ -80,6 +82,13 @@ We advise users especially those in Chinese mainland to use ModelScope.
 
 <details>
 <summary>Expand to see the snippet</summary>
+
+Before running the snippet, you need to install the following dependencies:
+
+
+```shell
+pip install torch modelscope transformers accelerate pillow
+```
 
 ```python
 import torch
@@ -97,15 +106,16 @@ warnings.filterwarnings('ignore')
 # set device
 torch.set_default_device('cpu')  # or 'cuda'
 
+model_name = 'BAAI/Bunny-v1.0-3B' # or 'BAAI/Bunny-v1.0-2B-zh'
 # create model
 snapshot_download(model_id='thomas/siglip-so400m-patch14-384')
 model = AutoModelForCausalLM.from_pretrained(
-    'BAAI/Bunny-v1.0-3B',
+    model_name,
     torch_dtype=torch.float16,
     device_map='auto',
     trust_remote_code=True)
 tokenizer = AutoTokenizer.from_pretrained(
-    'BAAI/Bunny-v1.0-3B',
+    model_name,
     trust_remote_code=True)
 
 # text prompt
@@ -128,28 +138,25 @@ output_ids = model.generate(
 print(tokenizer.decode(output_ids[input_ids.shape[1]:], skip_special_tokens=True).strip())
 ```
 
-Before running the snippet, you need to install the following dependencies:
-
-```shell
-pip install torch modelscope transformers accelerate pillow
-```
-
 </details>
 
 ## Model Zoo
 
 * Evaluation
-  
-| Checkpoint                                                   | MME$`^\text{P}`$ | MME$`^\text{C}`$ | MMB$`^\text{T}`$ | MMB$`^\text{D}`$ | SEED | MMMU$`^\text{V}`$ | MMMU$`^\text{T}`$ | VQA$`^\text{v2}`$ | GQA  | SQA$`^\text{I}`$ | POPE |
-| ------------------------------------------------------------ | :--------------: | :--------------: | :--------------: | :--------------: | :--: | :---------------: | :---------------: | :---------------: | :--: | :----------------: | :----: |
-| [bunny-phi-1.5-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-eva-lora) |      1213.7      |      278.9      |       60.9       |       56.8       | 56.4 | 30.0 |       28.4       |       76.5       | 60.4 | 58.2           | 86.1 |
-| [bunny-stablelm-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-eva-lora) |      1301.0      |      235.0       |       58.4       |       56.4       | 55.3 | 29.8 |       29.4        |       74.6        | 56.7 | 60.0             | 84.8 |
-| [bunny-phi-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-2-eva-lora) |      1421.0      |      285.4      |       68.6       |       67.4       | 62.2 | 35.9 |       32.6       |       78.9       | 62.3 | 69.1           | 87.1 |
-| [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) |      1230.0      |      237.5      |       61.2       |       59.7       | 57.7 | 30.0 |       29.1       |       78.0       | 61.1 | 61.3            | 85.8 |
-| [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) |      1366.8      |      236.1       |       65.1       |       62.8       | 58.8 | 29.9 |       29.8        |       78.9        | 60.9 | 61.1             | 85.9 |
-| **[Bunny-v1.0-3B/bunny-phi-2-siglip](https://huggingface.co/BAAI/Bunny-v1_0-3B)** |      1488.8      |      289.3      |       69.2       |       68.6       | 62.5 | 38.2 |       33.0       |       79.8       | 62.5 | 70.9        | 86.8 |
+
+| Checkpoint                                                   | MME$`^\text{P}`$ | MME$`^\text{C}`$ | MMB$`^{\text{T}/\text{D}}`$ | MMB-CN$`^{\text{T}/ \text{D}}`$ | SEED | MMMU$`^{\text{V}/\text{T}}`$ | VQA$`^\text{v2}`$ | GQA  | SQA$`^\text{I}`$ | POPE |
+| :----------------------------------------------------------- | :--------------: | :--------------: | :--------------: | :--------------: | :--------------: | :--: | :---------------: | :---------------: | :---------------: | :--: |
+| [bunny-phi-1.5-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-eva-lora) |      1213.7      |      278.9      |       60.9/56.8       |       -       | 56.4 | 30.0/28.4 | 76.5 |       60.4       |       58.2       | 86.1 |
+| [bunny-stablelm-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-eva-lora) |      1301.0      |      235.0       |       58.4/56.4       |       -       | 55.3 | 29.8/29.4 | 74.6 |       56.7       |       60.0    | 84.8 |
+| [bunny-phi-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-2-eva-lora) |      1421.0      |      285.4      |       68.6/67.4       |       -       | 62.2 | 35.9/32.6 | 78.9 |       62.3       |       69.1       | 87.1 |
+| [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) |      1230.0      |      237.5      |       61.2/59.7       |       -       | 57.7 | 30.0/29.1 | 78.0 |       61.1       |       61.3       | 85.8 |
+| [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) |      1366.8      |      236.1       |       65.1/62.8       |       -       | 58.8 | 29.9/29.8 | 78.9 |       60.9       |       61.1    | 85.9 |
+| [Bunny-v1.0-2B-zh/bunny-qwen1.5-1.8b-siglip](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh) |      1300.8      |      254.3      |       59.8/59.1       |       59.8/58.0       | 55.4 | 34.4/30.4 | 76.6 |       59.6       |       64.6       | 85.8 |
+| **[Bunny-v1.0-3B/bunny-phi-2-siglip](https://huggingface.co/BAAI/Bunny-v1_0-3B)** |      1488.8      |      289.3      |       69.2/68.6       |       -       | 62.5 | 38.2/33.0 | 79.8 |       62.5       |       70.9       | 86.8 |
 
 The model with the best performance is denoted as Bunny-v1.0-3B or bunny-phi-2-siglip, whose merged weights can be found [here](https://huggingface.co/BAAI/Bunny-v1_0-3B) and the LoRA weights can be found [here](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora).
+
+The model focuses on Chinese is denoted as Bunny-v1.0-2B-zh or bunny-qwen1.5-1.8b-siglip, whose merged weights can be found [here](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh) and the LoRA weights can be found [here](https://huggingface.co/BoyaWu10/bunny-qwen1.5-1.8b-siglip-lora).
 
 * Training details
   
@@ -160,6 +167,7 @@ The model with the best performance is denoted as Bunny-v1.0-3B or bunny-phi-2-s
 | [bunny-phi-2-eva-lora](https://huggingface.co/BoyaWu10/bunny-phi-2-eva-lora) | [EVA02_CLIP_L_336_psz14_s6B](https://huggingface.co/QuanSun/EVA-CLIP/blob/main/EVA02_CLIP_L_336_psz14_s6B.pt) | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2)    |    5e-5     | [bunny-pretrain-phi-2-eva](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-2-eva) |
 | [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [microsoft/phi-1_5](https://huggingface.co/microsoft/phi-1_5) |    5e-4     | [bunny-pretrain-phi-1.5-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-1.5-siglip) |
 | [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [stabilityai/stablelm-2-1_6b](https://huggingface.co/stabilityai/stablelm-2-1_6b) |    5e-4     | [bunny-pretrain-stablelm-2-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-stablelm-2-siglip) |
+| [bunny-qwen1.5-1.8b-siglip-lora](https://huggingface.co/BoyaWu10/bunny-qwen1.5-1.8b-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [Qwen/Qwen1.5-1.8B](https://huggingface.co/Qwen/Qwen1.5-1.8B) |    5e-4     | [bunny-pretrain-qwen1.5-1.8b-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-qwen1.5-1.8b-siglip) |
 | **[bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora)** | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2)    |    5e-4     | [bunny-pretrain-phi-2-siglip](https://huggingface.co/BAAI/bunny-pretrain-phi-2-siglip) |
 
 
@@ -231,13 +239,14 @@ For vision encoders, we support CLIP, EVA-CLIP and SigLIP.
 | EVA02_CLIP_L_336_psz14_s6B | [QuanSun/EVA-CLIP](https://huggingface.co/QuanSun/EVA-CLIP/blob/main/EVA02_CLIP_L_336_psz14_s6B.pt) |
 | siglip-so400m-patch14-384  | [google/siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) |
 
-For LLMs, we support phi-1.5, stablelm-2 and phi-2.
+For LLMs, we support phi-1.5, stablelm-2, qwen1.5-1.8b and phi-2.
 
 | MODEL_TYPE | LLM             | Download Link                                                |
 | ---------- | --------------- | ------------------------------------------------------------ |
 | phi-1.5    | phi-1_5     | [microsoft/phi-1_5](https://huggingface.co/microsoft/phi-1_5) |
 | stablelm-2 | stablelm-2-1_6b | [stabilityai/stablelm-2-1_6b](https://huggingface.co/stabilityai/stablelm-2-1_6b) |
-| phi-2      | phi-2           | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2) |
+| qwen1.5-1.8b | Qwen1.5-1.8B | [Qwen/Qwen1.5-1.8B](https://huggingface.co/Qwen/Qwen1.5-1.8B) |
+| phi-2 | phi-2 | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2) |
 
 Note that there are many variants of above models.
 We build and test our code based on the exact versions mentioned above.
@@ -327,7 +336,7 @@ More models will be supported in the future!
         --port 40000 \
         --worker http://localhost:40000 \
         --model-path /path/to/bunny/model \
-        --model-type phi-2 (or stablelm-2 or phi-1.5)
+        --model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b)
       ```
 
   * For LoRA tuning models
@@ -338,7 +347,7 @@ More models will be supported in the future!
       python script/merge_lora_weights.py \
         --model-path /path/to/bunny_lora_weights \
         --model-base /path/to/base_llm_model \
-        --model-type phi-2 (or stablelm-2 or phi-1.5) \
+        --model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b) \
         --save-model-path /path/to/merged_model
       ```
       Or you can use it without merging as below.
@@ -351,7 +360,7 @@ More models will be supported in the future!
         --worker http://localhost:40000 \
         --model-path /path/to/bunny_lora_weights \
         --model-base /path/to/base_llm_model \
-        --model-type phi-2 (or stablelm-2 or phi-1.5)
+        --model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b)
       ```
 
 
@@ -364,7 +373,7 @@ For CLI-based inference without using the Gradio interface, use the following co
   ```shell
   python -m bunny.serve.cli \
   	--model-path /path/to/bunny/model \
-  	--model-type phi-2 (or stablelm-2 or phi-1.5) \
+  	--model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b) \
   	--image-file /path/to/the/test/image
   ```
 
@@ -376,7 +385,7 @@ For CLI-based inference without using the Gradio interface, use the following co
   python script/merge_lora_weights.py \
   	--model-path /path/to/bunny_lora_weights \
   	--model-base /path/to/base_llm_model \
-  	--model-type phi-2 (or stablelm-2 or phi-1.5) \
+  	--model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b) \
   	--save-model-path /path/to/merged_model
   ```
 
@@ -386,7 +395,7 @@ For CLI-based inference without using the Gradio interface, use the following co
   python -m bunny.serve.cli \
   	--model-path /path/to/bunny_lora_weights \
   	--model-base /path/to/base_llm_model \
-  	--model-type phi-2 (or stablelm-2 or phi-1.5) \
+  	--model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b) \
   	--image-file /path/to/the/test/image
   ```
 
