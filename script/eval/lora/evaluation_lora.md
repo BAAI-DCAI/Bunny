@@ -18,7 +18,7 @@ Or you can evaluate it without merging as below.
 2. Update `MODEL_TYPE`, `MODEL_BASE` and `TARGET_DIR` accordingly.
 
 ```shell
-sh script/eval/lora/mme.sh
+CUDA_VISIBLE_DEVICES=0 sh script/eval/lora/mme.sh
 ```
 
 The responses and scores can be found in `eval/mme/answers_upload`.
@@ -30,7 +30,7 @@ The responses and scores can be found in `eval/mme/answers_upload`.
 2. Update `SPLIT`, `MODEL_TYPE`, `MODEL_BASE` and `TARGET_DIR` accordingly.
 
 ```shell
-sh script/eval/lora/mmbench.sh
+CUDA_VISIBLE_DEVICES=0 sh script/eval/lora/mmbench.sh
 ```
 
 The response file can be found in `eval/mmbench/answers_upload`. You can submit the Excel file to [submission link](https://mmbench.opencompass.org.cn/mmbench-submission) to obtain the evaluation scores.
@@ -59,7 +59,7 @@ The response file can be found in `eval/seed-bench/answers_upload` and the score
 2. Update `SPLIT`, `MODEL_TYPE`, `MODEL_BASE` and `TARGET_DIR` accordingly.
 
 ```shell
-sh script/eval/lora/mmmu.sh
+CUDA_VISIBLE_DEVICES=0 sh script/eval/lora/mmmu.sh
 ```
 
 The response file can be found in `eval/mmmu/answers_upload`.
@@ -107,7 +107,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 bash script/eval/lora/gqa.sh
 2. Update `MODEL_TYPE`, `MODEL_BASE` and `TARGET_DIR` accordingly.
 
 ```shell
-sh script/eval/lora/scienceqa.sh
+CUDA_VISIBLE_DEVICES=0 sh script/eval/lora/scienceqa.sh
 ```
 
 The responses and the scores can be found in `eval/scienceqa/results`.
@@ -118,7 +118,7 @@ The responses and the scores can be found in `eval/scienceqa/results`.
 2. Update `MODEL_TYPE`, `MODEL_BASE` and `TARGET_DIR` accordingly.
 
 ```Shell
-sh script/eval/lora/pope.sh
+CUDA_VISIBLE_DEVICES=0 sh script/eval/lora/pope.sh
 ```
 
 We report the averaged F1-score of three categories (random, popular and adversarial).
@@ -129,7 +129,7 @@ We report the averaged F1-score of three categories (random, popular and adversa
 2. Update `MODEL_TYPE`, `MODEL_BASE` and `TARGET_DIR` accordingly.
 
 ```shell
-sh script/eval/lora/mmvet.sh
+CUDA_VISIBLE_DEVICES=0 sh script/eval/lora/mmvet.sh
 ```
 
 The response file can be found in `eval/mm-vet/answers_upload`. You can submit the `json` response file to [submission link](https://huggingface.co/spaces/whyu/MM-Vet_Evaluator) to obtain the evaluation scores.
