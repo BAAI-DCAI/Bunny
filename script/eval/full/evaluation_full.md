@@ -75,7 +75,7 @@ For test set, you can submit the `json` response file to [submission_link](https
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 bash script/eval/full/vqav2.sh
 ```
 
-The response file can be found in `eval/vqav2/answers_upload`. You can submit the `json` response file to [submission link](https://eval.ai/web/challenges/challenge-page/830/submission) (Test-Dev Phase) to obtain the evaluation scores.
+The response file can be found in `eval/vqav2/answers_upload`. You can submit the `json` response file to [submission link](https://eval.ai/web/challenges/challenge-page/830) (Test-Dev Phase) to obtain the evaluation scores.
 
 ## GQA
 
