@@ -299,7 +299,7 @@ def main():
 
         sample = construct_prompt(sample, args.config)
         if sample['image']:
-            sample['image'] = vis_processors.preprocess(sample['image'], return_tensors='pt')['pixel_values'][0].to(
+            sample['image'] = vis_processors.preprocess(sample['image'].convert('RGB'), return_tensors='pt')['pixel_values'][0].to(
                 device)
         samples.append(sample)
 
