@@ -1,6 +1,6 @@
 import os
 from .eva_clip.eva_clip_encoder import EvaClipVisionTower
-from .siglip.siglip_encoder import SigLipVisionTower
+from .siglip.siglip_encoder import SiglipVisionTower
 from .clip.clip_encoder import CLIPVisionTower
 
 
@@ -8,7 +8,7 @@ def build_vision_tower(vision_tower_cfg, **kwargs):
     vision_tower = getattr(vision_tower_cfg, 'mm_vision_tower', getattr(vision_tower_cfg, 'vision_tower', None))
 
     if 'sig' in vision_tower.lower():
-        return SigLipVisionTower(vision_tower, vision_tower_cfg=vision_tower_cfg, **kwargs)
+        return SiglipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
 
     elif 'eva' in vision_tower.lower():
         return EvaClipVisionTower(vision_tower, args=vision_tower_cfg, **kwargs)
