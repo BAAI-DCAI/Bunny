@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SPLIT="MMBench_DEV_EN_legacy"
+LANG=en
 MODEL_TYPE=phi-2
 TARGET_DIR=bunny-phi-2
 
@@ -10,7 +11,7 @@ python -m bunny.eval.model_vqa_mmbench \
     --model-type $MODEL_TYPE \
     --question-file ./eval/mmbench/$SPLIT.tsv \
     --answers-file ./eval/mmbench/answers/$SPLIT/$TARGET_DIR.jsonl \
-    --lang en \
+    --lang $LANG \
     --single-pred-prompt \
     --temperature 0 \
     --conv-mode bunny

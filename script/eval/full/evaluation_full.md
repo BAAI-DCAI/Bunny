@@ -15,7 +15,7 @@ The responses and scores can be found in `eval/mme/answers_upload`.
 
 1. Refer to [MMBench GitHub](https://github.com/open-compass/MMBench) to download the benchmark dataset. We support `MMBench-Dev`, `MMBench-Test`, `MMBench-Dev (cn)` and `MMBench-Test (cn)`. Please note that only the files downloaded by **legacy link** are supported.
    Put `MMBench_DEV_EN_legacy.tsv`, `MMBench_TEST_EN_legacy.tsv`, `MMBench_DEV_CN_legacy.tsv` or `MMBench_TEST_CN_legacy.tsv` under `eval/mmbench`.
-2. Update `SPLIT`, `MODEL_TYPE` and `TARGET_DIR` accordingly.
+2. Update `SPLIT`, `LANG (en/cn)`, `MODEL_TYPE` and `TARGET_DIR` accordingly.
 
 ```shell
 CUDA_VISIBLE_DEVICES=0 sh script/eval/full/mmbench.sh
