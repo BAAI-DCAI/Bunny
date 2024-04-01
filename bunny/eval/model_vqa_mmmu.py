@@ -225,7 +225,11 @@ def run_model(args, samples, model, call_model_engine_fn=None, tokenizer=None, p
     out_samples = dict()
     with torch.no_grad():
         for sample in tqdm(samples):
+            if args.small_gpu_usage:
+                sample['image'] = sample['image'].cuda()
             response = call_model_engine_fn(args, sample, model, tokenizer, processor)
+            if args.small_gpu_usage:
+                sample['image'] = sample['image'].cpu()
 
             if sample['question_type'] == 'multiple-choice':
                 pred_ans = parse_multi_choice_response(response, sample['all_choices'], sample['index2ans'])
@@ -262,6 +266,8 @@ def main():
     parser.add_argument('--output-path', type=str, default=None)
     parser.add_argument('--split', type=str, default='validation')
     parser.add_argument('--seed', type=int, default=42)
+    parser.add_argument("--small-gpu-usage", action="store_true")
+
 
     args = parser.parse_args()
     device = torch.device("cuda") if torch.cuda.is_available() else "cpu"
@@ -299,8 +305,11 @@ def main():
 
         sample = construct_prompt(sample, args.config)
         if sample['image']:
-            sample['image'] = vis_processors.preprocess(sample['image'].convert('RGB'), return_tensors='pt')['pixel_values'][0].to(
-                device)
+            if args.small_gpu_usage:
+                sample['image'] = vis_processors.preprocess(sample['image'].convert('RGB'), return_tensors='pt')['pixel_values'][0]
+            else:
+                sample['image'] = vis_processors.preprocess(sample['image'].convert('RGB'), return_tensors='pt')['pixel_values'][0].to(device)
+
         samples.append(sample)
 
     # run ex
