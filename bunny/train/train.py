@@ -207,7 +207,9 @@ def train():
         ))
 
     assert model_args.vision_tower is not None
-    if model_args.model_type == 'phi-1.5' or model_args.model_type == 'phi-2' or model_args.model_type == 'qwen1.5-1.8b':
+    if (
+            model_args.model_type == 'phi-1.5' or model_args.model_type == 'phi-2'
+            or model_args.model_type == 'qwen1.5-1.8b' or model_args.model_type == 'minicpm'):
         tokenizer = transformers.AutoTokenizer.from_pretrained(
             model_args.model_name_or_path,
             cache_dir=training_args.cache_dir,
@@ -240,12 +242,16 @@ def train():
         model = BunnyStableLMForCausalLM.from_pretrained(
             model_args.model_name_or_path,
             cache_dir=training_args.cache_dir,
-            bos_token_id=tokenizer.bos_token_id,
-            eos_token_id=tokenizer.eos_token_id,
             **bnb_model_from_pretrained_args
         )
     elif model_args.model_type == 'qwen1.5-1.8b':
         model = BunnyQwenForCausalLM.from_pretrained(
+            model_args.model_name_or_path,
+            cache_dir=training_args.cache_dir,
+            **bnb_model_from_pretrained_args
+        )
+    elif model_args.model_type == 'minicpm':
+        model = BunnyMiniCPMForCausalLM.from_pretrained(
             model_args.model_name_or_path,
             cache_dir=training_args.cache_dir,
             **bnb_model_from_pretrained_args

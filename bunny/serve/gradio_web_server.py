@@ -192,7 +192,10 @@ def http_bot(state, model_selector, temperature, top_p, max_new_tokens, request:
         return
 
     if len(state.messages) == state.offset + 2:
-        template_name = "bunny"
+        if 'minicpm' in model_selector.lower():
+            template_name = "minicpm"
+        else:
+            template_name = "bunny"
         new_state = conv_templates[template_name].copy()
         new_state.append_message(new_state.roles[0], state.messages[-2][1])
         new_state.append_message(new_state.roles[1], None)
