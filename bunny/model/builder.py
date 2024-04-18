@@ -138,6 +138,24 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
     vision_tower = model.get_vision_tower()
     if not vision_tower.is_loaded:
         vision_tower.load_model()
+
+    if getattr(model.config, "unfreeze_vision_tower", False):
+        if 'lora' in model_name.lower():
+            assert model_base is not None
+            vision_non_lora_trainables = {k[19:]: v for k, v in non_lora_trainables.items() if
+                                          k.startswith('model.vision_tower.')}
+            vision_tower.load_state_dict(vision_non_lora_trainables, strict=False)
+        else:
+            assert model_base is None
+            from safetensors.torch import load_file
+            vision_weights = {}
+            for file_name in os.listdir(model_path):
+                if file_name.endswith('safetensors'):
+                    vision_weights.update(
+                        {k[19:]: v for k, v in load_file(os.path.join(model_path, file_name)).items() if
+                         k.startswith('model.vision_tower.')})
+            vision_tower.load_state_dict(vision_weights, strict=True)
+
     vision_tower.to(device=device, dtype=torch.float16)
     image_processor = vision_tower.image_processor
 
