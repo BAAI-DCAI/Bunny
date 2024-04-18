@@ -6,13 +6,15 @@
 
 📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Model](https://huggingface.co/BAAI/Bunny-v1_0-3B) | 🤖 [Model](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B) | 🧠 [Model](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B) | 🤗 [Data](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) | 🤖 [Data](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data) | 🐰 [Demo](https://wisemodel.cn/spaces/baai/Bunny)
 
-Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like EVA-CLIP, SigLIP and language backbones, including Phi-1.5, StableLM-2, Qwen1.5 and Phi-2. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our Bunny-v1.0-3B model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
+Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like EVA-CLIP, SigLIP and language backbones, including Phi-1.5, StableLM-2, Qwen1.5, MiniCPM and Phi-2. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our Bunny-v1.0-3B model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
 
 ![comparison](comparison.png)
 
 ## News and Updates
 
-* 2024.03.15 🔥 **Bunny-v1.0-2B-zh, focusing on Chinese, is released!** It is built upon SigLIP and Qwen1.5-1.8B. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh), [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-2B-zh/summary), and [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-2B-zh)! The benchmark results are in the [Model Zoo](#model-zoo).
+* 2024.04.18 🔥 **Bunny-v1.0-3B-zh, powerful on English and Chinese, is released!** It is built upon SigLIP and MiniCPM-2B. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-3B-zh), [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B-zh/summary), and [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B-zh)! The evaluation results are in the [Model Zoo](#model-zoo). We sincerely thank Zhenwei Shao for his kind help.
+
+* 2024.03.15 🔥 **Bunny-v1.0-2B-zh, focusing on Chinese, is released!** It is built upon SigLIP and Qwen1.5-1.8B. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh), [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-2B-zh/summary), and [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-2B-zh)! The evaluation results are in the [Model Zoo](#model-zoo).
 
 * 2024.03.06 🔥 **Bunny training data is released!** Check more details about Bunny-v1.0-data in [HuggingFace](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) or [ModelScope](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data)!
 * 2024.02.20 🔥 **Bunny technical report is ready!** Check more details about Bunny [here](https://arxiv.org/abs/2402.11530)!
@@ -22,7 +24,7 @@ Bunny is a family of lightweight but powerful multimodal models. It offers multi
 
 ### HuggingFace transformers
 
-Here we show a code snippet to show you how to use [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) and [Bunny-v1.0-2B-zh](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh) with HuggingFace transformers.
+Here we show a code snippet to show you how to use [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B), [Bunny-v1.0-3B-zh](https://huggingface.co/BAAI/Bunny-v1_0-3B-zh) and [Bunny-v1.0-2B-zh](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh) with HuggingFace transformers.
 
 Before running the snippet, you need to install the following dependencies:
 
@@ -44,7 +46,7 @@ warnings.filterwarnings('ignore')
 # set device
 torch.set_default_device('cpu')  # or 'cuda'
 
-model_name = 'BAAI/Bunny-v1_0-3B' # or 'BAAI/Bunny-v1_0-2B-zh'
+model_name = 'BAAI/Bunny-v1_0-3B' # or 'BAAI/Bunny-v1_0-3B-zh' or 'BAAI/Bunny-v1_0-2B-zh'
 # create model
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
@@ -106,7 +108,7 @@ warnings.filterwarnings('ignore')
 # set device
 torch.set_default_device('cpu')  # or 'cuda'
 
-model_name = 'BAAI/Bunny-v1.0-3B' # or 'BAAI/Bunny-v1.0-2B-zh'
+model_name = 'BAAI/Bunny-v1.0-3B' # or 'BAAI/Bunny-v1.0-3B-zh' or 'BAAI/Bunny-v1.0-2B-zh'
 # create model
 snapshot_download(model_id='thomas/siglip-so400m-patch14-384')
 model = AutoModelForCausalLM.from_pretrained(
@@ -152,11 +154,12 @@ print(tokenizer.decode(output_ids[input_ids.shape[1]:], skip_special_tokens=True
 | [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) |      1230.0      |      237.5      |       61.2/59.7       |       -       | 57.7 | 30.0/29.1 | 78.0 |       61.1       |       61.3       | 85.8 |
 | [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) |      1366.8      |      236.1       |       65.1/62.8       |       -       | 58.8 | 29.9/29.8 | 78.9 |       60.9       |       61.1    | 85.9 |
 | [Bunny-v1.0-2B-zh/bunny-qwen1.5-1.8b-siglip](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh) |      1300.8      |      254.3      |       59.8/59.1       |       59.5/58.5       | 55.4 | 34.4/30.4 | 76.6 |       59.6       |       64.6       | 85.8 |
+| [Bunny-v1.0-3B-zh/bunny-minicpm-siglip](https://huggingface.co/BAAI/Bunny-v1_0-3B-zh) |      1410.4      |      281.4      |       66.1/65.5       |       64.9/63.6       | 59.6 | 35.4/32.4 | 78.6 |       60.8       |       68.7       | 86.5 |
 | **[Bunny-v1.0-3B/bunny-phi-2-siglip](https://huggingface.co/BAAI/Bunny-v1_0-3B)** |      1488.8      |      289.3      |       69.2/68.6       |       -       | 62.5 | 38.2/33.0 | 79.8 |       62.5       |       70.9       | 86.8 |
 
 The model with the best performance is denoted as Bunny-v1.0-3B or bunny-phi-2-siglip, whose merged weights can be found [here](https://huggingface.co/BAAI/Bunny-v1_0-3B) and the LoRA weights can be found [here](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora).
 
-The model focuses on Chinese is denoted as Bunny-v1.0-2B-zh or bunny-qwen1.5-1.8b-siglip, whose merged weights can be found [here](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh) and the LoRA weights can be found [here](https://huggingface.co/BoyaWu10/bunny-qwen1.5-1.8b-siglip-lora).
+We also provide two models that focus on Chinese QA ability, namely Bunny-v1.0-3B-zh (bunny-minicpm-siglip) and Bunny-v1.0-2B-zh (bunny-qwen1.5-1.8b-siglip). The merged weights can be found [here](https://huggingface.co/BAAI/Bunny-v1_0-3B-zh) and [here](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh). The LoRA weights can be found [here](https://huggingface.co/BoyaWu10/bunny-minicpm-siglip-lora) and [here](https://huggingface.co/BoyaWu10/bunny-qwen1.5-1.8b-siglip-lora).
 
 * Training details
   
@@ -168,6 +171,7 @@ The model focuses on Chinese is denoted as Bunny-v1.0-2B-zh or bunny-qwen1.5-1.8
 | [bunny-phi-1.5-siglip-lora](https://huggingface.co/BoyaWu10/bunny-phi-1.5-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [microsoft/phi-1_5](https://huggingface.co/microsoft/phi-1_5) |    5e-4     | [bunny-pretrain-phi-1.5-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-1.5-siglip) |
 | [bunny-stablelm-2-siglip-lora](https://huggingface.co/BoyaWu10/bunny-stablelm-2-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [stabilityai/stablelm-2-1_6b](https://huggingface.co/stabilityai/stablelm-2-1_6b) |    5e-4     | [bunny-pretrain-stablelm-2-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-stablelm-2-siglip) |
 | [bunny-qwen1.5-1.8b-siglip-lora](https://huggingface.co/BoyaWu10/bunny-qwen1.5-1.8b-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [Qwen/Qwen1.5-1.8B](https://huggingface.co/Qwen/Qwen1.5-1.8B) |    5e-4     | [bunny-pretrain-qwen1.5-1.8b-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-qwen1.5-1.8b-siglip) |
+| [bunny-minicpm-siglip-lora](https://huggingface.co/BoyaWu10/bunny-minicpm-siglip-lora) | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [openbmb/MiniCPM-2B-history](https://huggingface.co/openbmb/MiniCPM-2B-history) (step 280000) |    5e-4     | [bunny-pretrain-minicpm-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-minicpm-siglip) |
 | **[bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora)** | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2)    |    5e-4     | [bunny-pretrain-phi-2-siglip](https://huggingface.co/BAAI/bunny-pretrain-phi-2-siglip) |
 
 
@@ -239,13 +243,14 @@ For vision encoders, we support CLIP, EVA-CLIP and SigLIP.
 | EVA02_CLIP_L_336_psz14_s6B | [QuanSun/EVA-CLIP](https://huggingface.co/QuanSun/EVA-CLIP/blob/main/EVA02_CLIP_L_336_psz14_s6B.pt) |
 | siglip-so400m-patch14-384  | [google/siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) |
 
-For LLMs, we support phi-1.5, stablelm-2, qwen1.5-1.8b and phi-2.
+For LLMs, we support phi-1.5, stablelm-2, qwen1.5-1.8b, minicpm and phi-2.
 
 | MODEL_TYPE | LLM             | Download Link                                                |
 | ---------- | --------------- | ------------------------------------------------------------ |
 | phi-1.5    | phi-1_5     | [microsoft/phi-1_5](https://huggingface.co/microsoft/phi-1_5) |
 | stablelm-2 | stablelm-2-1_6b | [stabilityai/stablelm-2-1_6b](https://huggingface.co/stabilityai/stablelm-2-1_6b) |
 | qwen1.5-1.8b | Qwen1.5-1.8B | [Qwen/Qwen1.5-1.8B](https://huggingface.co/Qwen/Qwen1.5-1.8B) |
+| minicpm | MiniCPM-2B | [openbmb/MiniCPM-2B-history](https://huggingface.co/openbmb/MiniCPM-2B-history) (step 280000) |
 | phi-2 | phi-2 | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2) |
 
 Note that there are many variants of above models.
@@ -276,7 +281,7 @@ More models will be supported in the future!
 
 * Run
 
-  Update `--model_name_or_path` and `--vision_tower` to the paths of the LLM and vision encoder, respectively. Update `MODEL_TYPE`, `PRETRAIN_DIR` and `OUTPUT_DIR` accordingly. The global batch size is 128.
+  Update `--model_name_or_path` and `--vision_tower` to the paths of the LLM and vision encoder, respectively. Update `MODEL_TYPE`, `PRETRAIN_DIR` and `OUTPUT_DIR` accordingly. The global batch size is 128. For `MODEL_TYPE = minicpm`, change `VERSION` to `minicpm`, too.
   
   ```shell
   # full-parameter tuning
@@ -336,7 +341,7 @@ More models will be supported in the future!
         --port 40000 \
         --worker http://localhost:40000 \
         --model-path /path/to/bunny/model \
-        --model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b)
+        --model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b or minicpm)
       ```
 
   * For LoRA tuning models
@@ -347,7 +352,7 @@ More models will be supported in the future!
       python script/merge_lora_weights.py \
         --model-path /path/to/bunny_lora_weights \
         --model-base /path/to/base_llm_model \
-        --model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b) \
+        --model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b or minicpm) \
         --save-model-path /path/to/merged_model
       ```
       Or you can use it without merging as below.
@@ -360,7 +365,7 @@ More models will be supported in the future!
         --worker http://localhost:40000 \
         --model-path /path/to/bunny_lora_weights \
         --model-base /path/to/base_llm_model \
-        --model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b)
+        --model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b or minicpm)
       ```
 
 
@@ -373,8 +378,9 @@ For CLI-based inference without using the Gradio interface, use the following co
   ```shell
   python -m bunny.serve.cli \
   	--model-path /path/to/bunny/model \
-  	--model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b) \
-  	--image-file /path/to/the/test/image
+  	--model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b or minicpm) \
+  	--image-file /path/to/the/test/image \
+  	--conv-mode bunny (change to minicpm for model-type = minicpm)
   ```
 
 * For LoRA tuning models
@@ -385,7 +391,7 @@ For CLI-based inference without using the Gradio interface, use the following co
   python script/merge_lora_weights.py \
   	--model-path /path/to/bunny_lora_weights \
   	--model-base /path/to/base_llm_model \
-  	--model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b) \
+  	--model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b or minicpm) \
   	--save-model-path /path/to/merged_model
   ```
 
@@ -395,8 +401,9 @@ For CLI-based inference without using the Gradio interface, use the following co
   python -m bunny.serve.cli \
   	--model-path /path/to/bunny_lora_weights \
   	--model-base /path/to/base_llm_model \
-  	--model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b) \
-  	--image-file /path/to/the/test/image
+  	--model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b or minicpm) \
+  	--image-file /path/to/the/test/image \
+  	--conv-mode bunny (change to minicpm for model-type = minicpm)
   ```
 
 ## Evaluation
