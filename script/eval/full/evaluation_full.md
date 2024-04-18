@@ -1,5 +1,7 @@
 # Evaluation for full-parameter tuning models
 
+**Note that change `conv-mode` to `minicpm` for `MODEL_TYPE = minicpm`.**
+
 ## MME
 
 1. Refer to [MME GitHub](https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation) to download the benchmark dataset and put `MME_Benchmark_release_version` under `eval/mme`.
