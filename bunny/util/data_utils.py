@@ -122,7 +122,8 @@ def preprocess_bunny(
             cur_len += round_len
         target[cur_len:] = IGNORE_INDEX
 
-        cur_len -= end_token_cnt
+        if tokenizer.pad_token_id == tokenizer.eos_token_id:
+            cur_len -= end_token_cnt
         if cur_len < tokenizer.model_max_length:
             if cur_len != total_len:
                 target[:] = IGNORE_INDEX
@@ -137,7 +138,7 @@ def preprocess_bunny(
     )
 
 
-def preprocess_bunny_minicpm(
+def preprocess_bunny_with_bos(
         sources,
         tokenizer: transformers.PreTrainedTokenizer,
         has_image: bool = False
@@ -184,6 +185,7 @@ def preprocess_bunny_minicpm(
 
         rounds = conversation.split(conv.sep2)
         cur_len = 1
+        end_token_cnt = 0
         target[:cur_len] = IGNORE_INDEX
 
         for i, rou in enumerate(rounds):
@@ -204,9 +206,12 @@ def preprocess_bunny_minicpm(
 
             target[cur_len: cur_len + instruction_len] = IGNORE_INDEX
 
+            end_token_cnt += 1
             cur_len += round_len
         target[cur_len:] = IGNORE_INDEX
 
+        if tokenizer.pad_token_id == tokenizer.eos_token_id:
+            cur_len -= end_token_cnt
         if cur_len < tokenizer.model_max_length:
             if cur_len != total_len:
                 target[:] = IGNORE_INDEX
@@ -254,7 +259,7 @@ def preprocess(
     if conversation_lib.default_conversation.version == "bunny":
         return preprocess_bunny(sources, tokenizer, has_image=has_image)
     elif conversation_lib.default_conversation.version == "minicpm":
-        return preprocess_bunny_minicpm(sources, tokenizer, has_image=has_image)
+        return preprocess_bunny_with_bos(sources, tokenizer, has_image=has_image)
 
 
 class LazySupervisedDataset(Dataset):
