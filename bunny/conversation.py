@@ -202,6 +202,18 @@ conv_minicpm = Conversation(
     sep2="</s>",
 )
 
+conv_llama = Conversation(
+    system="A chat between a curious user and an artificial intelligence assistant. "
+           "The assistant gives helpful, detailed, and polite answers to the user's questions.",
+    roles=("USER", "ASSISTANT"),
+    version="llama",
+    messages=(),
+    offset=0,
+    sep_style=SeparatorStyle.TWO,
+    sep=" ",
+    sep2="<|end_of_text|>",
+)
+
 conv_plain = Conversation(
     system="",
     roles=("", ""),
@@ -217,7 +229,8 @@ conv_templates = {
     "default": conv_bunny,
     "bunny": conv_bunny,
     "plain": conv_plain,
-    'minicpm': conv_minicpm
+    'minicpm': conv_minicpm,
+    'llama': conv_llama
 }
 
 if __name__ == "__main__":
