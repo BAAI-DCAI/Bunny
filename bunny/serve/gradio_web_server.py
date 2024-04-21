@@ -192,7 +192,9 @@ def http_bot(state, model_selector, temperature, top_p, max_new_tokens, request:
         return
 
     if len(state.messages) == state.offset + 2:
-        if 'minicpm' in model_selector.lower():
+        if 'llama' in model_selector.lower():
+            template_name = "llama"
+        elif 'minicpm' in model_selector.lower():
             template_name = "minicpm"
         else:
             template_name = "bunny"
