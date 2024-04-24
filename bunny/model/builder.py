@@ -51,8 +51,8 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
                                                              config=lora_cfg_pretrained, **kwargs)
         elif model_type == 'qwen1.5-1.8b':
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)
-            model = BunnyQwenForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True, config=lora_cfg_pretrained,
-                                                         **kwargs)
+            model = BunnyQwen2ForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True, config=lora_cfg_pretrained,
+                                                          **kwargs)
         elif model_type == 'minicpm':
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)
             model = BunnyMiniCPMForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True,
@@ -114,8 +114,8 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
                                                              config=cfg_pretrained, **kwargs)
         elif model_type == 'qwen1.5-1.8b':
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)
-            model = BunnyQwenForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True, config=cfg_pretrained,
-                                                         **kwargs)
+            model = BunnyQwen2ForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True, config=cfg_pretrained,
+                                                          **kwargs)
         elif model_type == 'minicpm':
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)
             model = BunnyMiniCPMForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True, config=cfg_pretrained,
@@ -137,7 +137,7 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
             model = BunnyStableLMForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
         elif model_type == 'qwen1.5-1.8b':
             tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
-            model = BunnyQwenForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
+            model = BunnyQwen2ForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
         elif model_type == 'minicpm':
             tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
             model = BunnyMiniCPMForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)

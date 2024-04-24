@@ -11,23 +11,23 @@ from transformers.modeling_outputs import CausalLMOutputWithPast
 from ..bunny_arch import BunnyMetaModel, BunnyMetaForCausalLM
 
 
-class BunnyQwenConfig(Qwen2Config):
-    model_type = "bunny-qwen"
+class BunnyQwen2Config(Qwen2Config):
+    model_type = "bunny-qwen2"
 
 
-class BunnyQwenModel(BunnyMetaModel, Qwen2Model):
-    config_class = BunnyQwenConfig
+class BunnyQwen2Model(BunnyMetaModel, Qwen2Model):
+    config_class = BunnyQwen2Config
 
     def __init__(self, config: Qwen2Config):
-        super(BunnyQwenModel, self).__init__(config)
+        super(BunnyQwen2Model, self).__init__(config)
 
 
-class BunnyQwenForCausalLM(Qwen2ForCausalLM, BunnyMetaForCausalLM):
-    config_class = BunnyQwenConfig
+class BunnyQwen2ForCausalLM(Qwen2ForCausalLM, BunnyMetaForCausalLM):
+    config_class = BunnyQwen2Config
 
     def __init__(self, config):
         super(Qwen2ForCausalLM, self).__init__(config)
-        self.model = BunnyQwenModel(config)
+        self.model = BunnyQwen2Model(config)
         self.vocab_size = config.vocab_size
         self.lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
 
@@ -96,5 +96,5 @@ class BunnyQwenForCausalLM(Qwen2ForCausalLM, BunnyMetaForCausalLM):
         return _inputs
 
 
-AutoConfig.register("bunny-qwen", BunnyQwenConfig)
-AutoModelForCausalLM.register(BunnyQwenConfig, BunnyQwenForCausalLM)
+AutoConfig.register("bunny-qwen2", BunnyQwen2Config)
+AutoModelForCausalLM.register(BunnyQwen2Config, BunnyQwen2ForCausalLM)
