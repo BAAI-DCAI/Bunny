@@ -57,7 +57,8 @@ warnings.filterwarnings('ignore')
 torch.set_default_device('cpu')  # or 'cuda'
 
 model_name = 'BAAI/Bunny-Llama-3-8B-V' # or 'BAAI/Bunny-v1_0-3B' or 'BAAI/Bunny-v1_0-3B-zh' or 'BAAI/Bunny-v1_0-2B-zh'
-offset_bos = 1 # for other three, set to 0
+offset_bos = 1 # for Bunny-Llama-3-8B-V and Bunny-v1_0-3B-zh
+# offset_bos = 0 for Bunny-v1_0-3B and Bunny-v1_0-2B-zh
 
 # create model
 model = AutoModelForCausalLM.from_pretrained(
@@ -120,8 +121,10 @@ warnings.filterwarnings('ignore')
 # set device
 torch.set_default_device('cpu')  # or 'cuda'
 
-model_name = 'BAAI/Bunny-Llama-3-8B-V' # or 'BAAI/Bunny-v1_0-3B' or 'BAAI/Bunny-v1_0-3B-zh' or 'BAAI/Bunny-v1_0-2B-zh'
-offset_bos = 1 # for other three, set to 0
+model_name = 'BAAI/Bunny-Llama-3-8B-V' # or 'BAAI/Bunny-v1.0-3B' or 'BAAI/Bunny-v1.0-3B-zh' or 'BAAI/Bunny-v1.0-2B-zh'
+offset_bos = 1 # for Bunny-Llama-3-8B-V and Bunny-v1.0-3B-zh
+# offset_bos = 0 for Bunny-v1.0-3B and Bunny-v1.0-2B-zh
+
 # create model
 snapshot_download(model_id='thomas/siglip-so400m-patch14-384')
 model = AutoModelForCausalLM.from_pretrained(
