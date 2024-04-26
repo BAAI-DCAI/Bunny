@@ -208,10 +208,7 @@ def train():
         ))
 
     assert model_args.vision_tower is not None
-    if (
-            model_args.model_type == 'phi-1.5' or model_args.model_type == 'phi-2'
-            or model_args.model_type == 'qwen1.5-1.8b' or model_args.model_type == 'minicpm'
-            or model_args.model_type == 'llama3-8b'):
+    if model_args.model_type in {'phi-1.5', 'phi-2', 'qwen1.5-1.8b', 'minicpm', 'llama3-8b'}:
         tokenizer = transformers.AutoTokenizer.from_pretrained(
             model_args.model_name_or_path,
             cache_dir=training_args.cache_dir,
