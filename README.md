@@ -193,7 +193,26 @@ We also provide two models that focus on Chinese QA ability, namely Bunny-v1.0-3
 
 
 ## Install
+Either start from our docker or install locally on your own. 
 
+### Start from Our Docker
+Directly start from our configured docker image by `docker pull russellrobin/bunny:latest`. 
+
+<details>
+<summary>Expand to see how to keep codes up to date.</summary>
+Although this docker is under regular maintenance by us, local Bunny codes aren't guaranteed to be kept up to date with our GitHub repo. 
+You may want to:
+
+1. Run `pip install --upgrade transformers && cd Bunny` in a running container,
+
+2. Set default GitHub identity by `git config user.email "you@example.com" && git config user.name "Your Name"`,
+
+3. Update Bunny local codes using `git pull`. 
+
+You are all set!
+</details>
+
+### Local Installation
 * CUDA and cuDNN
 
   We use CUDA 11.8 and cuDNN 8.7.0. We actually use the CUDA docker by NVIDIA: `docker pull nvcr.io/nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04`. CUDA 12 is fine, too.
