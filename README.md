@@ -45,6 +45,10 @@ Before running the snippet, you need to install the following dependencies:
 ```shell
 pip install torch transformers accelerate pillow
 ```
+
+If the CUDA memory is enough, it would be faster to execute this snippet by setting `CUDA_VISIBLE_DEVICES=0`.
+
+
 ```python
 import torch
 import transformers
@@ -58,7 +62,8 @@ transformers.logging.disable_progress_bar()
 warnings.filterwarnings('ignore')
 
 # set device
-torch.set_default_device('cpu')  # or 'cuda'
+device = 'cuda'  # or cpu
+torch.set_default_device(device)
 
 model_name = 'BAAI/Bunny-Llama-3-8B-V' # or 'BAAI/Bunny-v1_0-3B' or 'BAAI/Bunny-v1_0-3B-zh' or 'BAAI/Bunny-v1_0-2B-zh'
 offset_bos = 1 # for Bunny-Llama-3-8B-V and Bunny-v1_0-3B-zh
@@ -67,7 +72,7 @@ offset_bos = 1 # for Bunny-Llama-3-8B-V and Bunny-v1_0-3B-zh
 # create model
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    torch_dtype=torch.float16,
+    torch_dtype=torch.float16, # float32 for cpu
     device_map='auto',
     trust_remote_code=True)
 tokenizer = AutoTokenizer.from_pretrained(
@@ -78,11 +83,11 @@ tokenizer = AutoTokenizer.from_pretrained(
 prompt = 'Why is the image funny?'
 text = f"A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. USER: <image>\n{prompt} ASSISTANT:"
 text_chunks = [tokenizer(chunk).input_ids for chunk in text.split('<image>')]
-input_ids = torch.tensor(text_chunks[0] + [-200] + text_chunks[1][offset_bos:], dtype=torch.long).unsqueeze(0)
+input_ids = torch.tensor(text_chunks[0] + [-200] + text_chunks[1][offset_bos:], dtype=torch.long).unsqueeze(0).to(device)
 
 # image, sample images can be found in https://huggingface.co/BAAI/Bunny-Llama-3-8B-V/tree/main/images
 image = Image.open('example_2.png')
-image_tensor = model.process_images([image], model.config).to(dtype=model.dtype)
+image_tensor = model.process_images([image], model.config).to(dtype=model.dtype, device=device)
 
 # generate
 output_ids = model.generate(
@@ -108,6 +113,7 @@ Before running the snippet, you need to install the following dependencies:
 ```shell
 pip install torch modelscope transformers accelerate pillow
 ```
+If the CUDA memory is enough, it would be faster to execute this snippet by setting `CUDA_VISIBLE_DEVICES=0`.
 
 ```python
 import torch
@@ -123,7 +129,8 @@ transformers.logging.disable_progress_bar()
 warnings.filterwarnings('ignore')
 
 # set device
-torch.set_default_device('cpu')  # or 'cuda'
+device = 'cuda'  # or cpu
+torch.set_default_device(device)
 
 model_name = 'BAAI/Bunny-Llama-3-8B-V' # or 'BAAI/Bunny-v1.0-3B' or 'BAAI/Bunny-v1.0-3B-zh' or 'BAAI/Bunny-v1.0-2B-zh'
 offset_bos = 1 # for Bunny-Llama-3-8B-V and Bunny-v1.0-3B-zh
@@ -133,7 +140,7 @@ offset_bos = 1 # for Bunny-Llama-3-8B-V and Bunny-v1.0-3B-zh
 snapshot_download(model_id='thomas/siglip-so400m-patch14-384')
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    torch_dtype=torch.float16,
+    torch_dtype=torch.float16, # float32 for cpu
     device_map='auto',
     trust_remote_code=True)
 tokenizer = AutoTokenizer.from_pretrained(
@@ -144,11 +151,11 @@ tokenizer = AutoTokenizer.from_pretrained(
 prompt = 'Why is the image funny?'
 text = f"A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. USER: <image>\n{prompt} ASSISTANT:"
 text_chunks = [tokenizer(chunk).input_ids for chunk in text.split('<image>')]
-input_ids = torch.tensor(text_chunks[0] + [-200] + text_chunks[1][offset_bos:], dtype=torch.long).unsqueeze(0)
+input_ids = torch.tensor(text_chunks[0] + [-200] + text_chunks[1][offset_bos:], dtype=torch.long).unsqueeze(0).to(device)
 
 # image, sample images can be found in images folder on https://www.modelscope.cn/models/BAAI/Bunny-Llama-3-8B-V/files
 image = Image.open('example_2.png')
-image_tensor = model.process_images([image], model.config).to(dtype=model.dtype)
+image_tensor = model.process_images([image], model.config).to(dtype=model.dtype, device=device)
 
 # generate
 output_ids = model.generate(
