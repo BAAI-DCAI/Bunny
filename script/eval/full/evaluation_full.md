@@ -1,6 +1,6 @@
 # Evaluation for full-parameter tuning models
 
-**Note that change `conv-mode` to `minicpm/llama` for `MODEL_TYPE = minicpm/llama3-8b`.**
+**Note that change `conv-mode` to `minicpm/phi3/llama` for `MODEL_TYPE = minicpm/phi-3/llama3-8b`.**
 
 ## MME
 
