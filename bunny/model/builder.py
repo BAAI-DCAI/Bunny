@@ -12,7 +12,7 @@ from bunny.model import *
 
 def load_pretrained_model(model_path, model_base, model_name, model_type, load_8bit=False, load_4bit=False,
                           device_map="auto", device="cuda", **kwargs):
-    if model_type not in {'phi-1.5', 'phi-2', 'stablelm-2', 'qwen1.5-1.8b', 'minicpm', 'llama3-8b'}:
+    if model_type not in {'phi-1.5', 'phi-2', 'phi-3', 'stablelm-2', 'qwen1.5-1.8b', 'minicpm', 'llama3-8b'}:
         raise ValueError(f"Unknown Model Type {model_type}")
 
     kwargs = {"device_map": device_map, **kwargs}
@@ -45,6 +45,10 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)
             model = BunnyPhiForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True,
                                                         config=lora_cfg_pretrained, **kwargs)
+        elif model_type == 'phi-3':
+            tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)
+            model = BunnyPhi3ForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True,
+                                                         config=lora_cfg_pretrained, **kwargs)
         elif model_type == 'stablelm-2':
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True, trust_remote_code=True)
             model = BunnyStableLMForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True,
@@ -108,6 +112,10 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)
             model = BunnyPhiForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True,
                                                         config=cfg_pretrained, **kwargs)
+        elif model_type == 'phi-3':
+            tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True)
+            model = BunnyPhi3ForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True,
+                                                         config=cfg_pretrained, **kwargs)
         elif model_type == 'stablelm-2':
             tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=True, trust_remote_code=True)
             model = BunnyStableLMForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True,
@@ -132,6 +140,9 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
         if model_type == 'phi-1.5' or model_type == 'phi-2':
             tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
             model = BunnyPhiForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
+        elif model_type == 'phi-3':
+            tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True)
+            model = BunnyPhi3ForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
         elif model_type == 'stablelm-2':
             tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=True, trust_remote_code=True)
             model = BunnyStableLMForCausalLM.from_pretrained(model_path, low_cpu_mem_usage=True, **kwargs)
@@ -178,5 +189,8 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
 
     if model.generation_config.pad_token_id is None:
         model.generation_config.pad_token_id = model.generation_config.eos_token_id
+
+    if model_type == 'phi-3':
+        model.generation_config.eos_token_id = tokenizer.eos_token_id
 
     return tokenizer, model, image_processor, context_len

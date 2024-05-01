@@ -194,6 +194,8 @@ def http_bot(state, model_selector, temperature, top_p, max_new_tokens, request:
     if len(state.messages) == state.offset + 2:
         if 'llama3-8b' in model_selector.lower() or model_selector == 'Bunny-Llama-3-8B-V':
             conv_mode = "llama"
+        elif 'phi-3' in model_selector.lower() or model_selector in {'Bunny-v1_0-4B', 'Bunny-v1.0-4B'}:
+            conv_mode = "phi3"
         elif 'minicpm' in model_selector.lower() or model_selector in {'Bunny-v1_0-3B-zh', 'Bunny-v1.0-3B-zh'}:
             conv_mode = "minicpm"
         else:

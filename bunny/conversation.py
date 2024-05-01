@@ -190,6 +190,18 @@ conv_bunny = Conversation(
     sep2="<|endoftext|>",
 )
 
+conv_phi3 = Conversation(
+    system="A chat between a curious user and an artificial intelligence assistant. "
+           "The assistant gives helpful, detailed, and polite answers to the user's questions.",
+    roles=("USER", "ASSISTANT"),
+    version="phi3",
+    messages=(),
+    offset=0,
+    sep_style=SeparatorStyle.TWO,
+    sep=" ",
+    sep2="<|endoftext|>",
+)
+
 conv_minicpm = Conversation(
     system="A chat between a curious user and an artificial intelligence assistant. "
            "The assistant gives helpful, detailed, and polite answers to the user's questions.",
@@ -228,6 +240,7 @@ default_conversation = conv_bunny
 conv_templates = {
     "default": conv_bunny,
     "bunny": conv_bunny,
+    "phi3": conv_phi3,
     "plain": conv_plain,
     'minicpm': conv_minicpm,
     'llama': conv_llama
