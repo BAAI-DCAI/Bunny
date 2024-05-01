@@ -192,13 +192,13 @@ def http_bot(state, model_selector, temperature, top_p, max_new_tokens, request:
         return
 
     if len(state.messages) == state.offset + 2:
-        if 'llama' in model_selector.lower():
-            template_name = "llama"
-        elif 'minicpm' in model_selector.lower():
-            template_name = "minicpm"
+        if 'llama3-8b' in model_selector.lower() or model_selector == 'Bunny-Llama-3-8B-V':
+            conv_mode = "llama"
+        elif 'minicpm' in model_selector.lower() or model_selector in {'Bunny-v1_0-3B-zh', 'Bunny-v1.0-3B-zh'}:
+            conv_mode = "minicpm"
         else:
-            template_name = "bunny"
-        new_state = conv_templates[template_name].copy()
+            conv_mode = "bunny"
+        new_state = conv_templates[conv_mode].copy()
         new_state.append_message(new_state.roles[0], state.messages[-2][1])
         new_state.append_message(new_state.roles[1], None)
         state = new_state
@@ -295,7 +295,7 @@ def http_bot(state, model_selector, temperature, top_p, max_new_tokens, request:
 title_markdown = ("""
 # 🐰 Bunny: A family of lightweight multimodal models
 
-[📖[Technical report](https://arxiv.org/abs/2402.11530)] | [🏠[Code](https://github.com/BAAI-DCAI/Bunny)] | [🤗[Model](https://huggingface.co/BAAI/Bunny-v1_0-3B)]
+[📖[Technical report](https://arxiv.org/abs/2402.11530)] | [🏠[Code](https://github.com/BAAI-DCAI/Bunny)] | [🤗[Model](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V)]
 
 """)
 

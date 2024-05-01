@@ -380,7 +380,7 @@ More models will be supported in the future!
 
 * Launching Model Workers
 
-  Model workers handle the processing of model inferences. Configure each worker with the appropriate model and start it.
+  Model workers handle the processing of model inferences. Configure each worker with the appropriate model and start it. Note to check whether `conv_mode` is correct [here](https://github.com/BAAI-DCAI/Bunny/blob/main/bunny/serve/gradio_web_server.py#L194) which is decided by the name (path) of the model.
 
   * For full-parameter tuning models
 
