@@ -50,6 +50,7 @@ pip install torch transformers accelerate pillow
 
 If the CUDA memory is enough, it would be faster to execute this snippet by setting `CUDA_VISIBLE_DEVICES=0`.
 
+Users especially those in Chinese mainland may want to refer to a HuggingFace [mirror site](https://hf-mirror.com). 
 
 ```python
 import torch
