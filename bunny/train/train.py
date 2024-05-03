@@ -31,6 +31,7 @@ class ModelArguments:
     tune_mm_mlp_adapter: bool = field(default=False)
     vision_tower: Optional[str] = field(default=None)
     unfreeze_vision_tower: bool = field(default=False)
+    use_s2: bool = field(default=False)
     pretrain_mm_mlp_adapter: Optional[str] = field(default=None)
     mm_projector_type: Optional[str] = field(default='mlp2x_gelu')
 
@@ -342,6 +343,8 @@ def train():
         model.get_model().mm_projector.to(dtype=compute_dtype, device=training_args.device)
 
     model.config.mm_projector_lr = training_args.mm_projector_lr
+
+    model.config.use_s2 = model_args.use_s2
 
     model.config.unfreeze_vision_tower = training_args.unfreeze_vision_tower = model_args.unfreeze_vision_tower
     if training_args.unfreeze_vision_tower:
