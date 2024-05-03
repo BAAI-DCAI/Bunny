@@ -268,7 +268,6 @@ def main():
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument("--small-gpu-usage", action="store_true")
 
-
     args = parser.parse_args()
     device = torch.device("cuda") if torch.cuda.is_available() else "cpu"
     set_seed(args.seed)
@@ -300,7 +299,8 @@ def main():
                                                                           args.model_type)
 
     samples = []
-    for sample in dataset:
+    print('Processing MMMU dataset...')
+    for sample in tqdm(dataset):
         sample = process_single_sample(sample)
 
         sample = construct_prompt(sample, args.config)
@@ -312,6 +312,7 @@ def main():
 
         samples.append(sample)
 
+    print('Start to evaluate...')
     # run ex
     out_samples = run_model(args, samples, model, call_model_engine, tokenizer, processor)
 
