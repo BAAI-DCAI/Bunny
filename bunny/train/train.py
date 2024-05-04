@@ -208,7 +208,7 @@ def train():
         ))
 
     assert model_args.vision_tower is not None
-    if model_args.model_type in {'phi-1.5', 'phi-2', 'phi-3', 'qwen1.5-1.8b', 'minicpm', 'llama3-8b'}:
+    if model_args.model_type in {'phi-1.5', 'phi-2', 'phi-3', 'qwen1.5-1.8b', 'gemma', 'minicpm', 'llama3-8b'}:
         tokenizer = transformers.AutoTokenizer.from_pretrained(
             model_args.model_name_or_path,
             cache_dir=training_args.cache_dir,
@@ -254,6 +254,12 @@ def train():
         )
     elif model_args.model_type == 'qwen1.5-1.8b':
         model = BunnyQwen2ForCausalLM.from_pretrained(
+            model_args.model_name_or_path,
+            cache_dir=training_args.cache_dir,
+            **bnb_model_from_pretrained_args
+        )
+    elif model_args.model_type == 'gemma':
+        model = BunnyGemmaForCausalLM.from_pretrained(
             model_args.model_name_or_path,
             cache_dir=training_args.cache_dir,
             **bnb_model_from_pretrained_args

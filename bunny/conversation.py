@@ -202,6 +202,18 @@ conv_phi3 = Conversation(
     sep2="<|endoftext|>",
 )
 
+conv_gemma = Conversation(
+    system="A chat between a curious user and an artificial intelligence assistant. "
+           "The assistant gives helpful, detailed, and polite answers to the user's questions.",
+    roles=("USER", "ASSISTANT"),
+    version="gemma",
+    messages=(),
+    offset=0,
+    sep_style=SeparatorStyle.TWO,
+    sep=" ",
+    sep2="<eos>",
+)
+
 conv_minicpm = Conversation(
     system="A chat between a curious user and an artificial intelligence assistant. "
            "The assistant gives helpful, detailed, and polite answers to the user's questions.",
@@ -241,6 +253,7 @@ conv_templates = {
     "default": conv_bunny,
     "bunny": conv_bunny,
     "phi3": conv_phi3,
+    "gemma": conv_gemma,
     "plain": conv_plain,
     'minicpm': conv_minicpm,
     'llama': conv_llama
