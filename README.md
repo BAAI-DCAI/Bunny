@@ -334,7 +334,7 @@ More models will be supported in the future!
 
 * Run
 
-  Update `--model_name_or_path` and `--vision_tower` to the paths of the LLM and vision encoder, respectively. Update `MODEL_TYPE`, `PRETRAIN_DIR` and `OUTPUT_DIR` accordingly. The global batch size is 128. For `MODEL_TYPE = minicpm/llama3-8b`, change `VERSION` to `minicpm/llama`, too.
+  Update `--model_name_or_path` and `--vision_tower` to the paths of the LLM and vision encoder, respectively. Update `MODEL_TYPE`, `PRETRAIN_DIR` and `OUTPUT_DIR` accordingly. The global batch size is 128. For `MODEL_TYPE = minicpm/phi-3/llama3-8b`, change `VERSION` to `minicpm/phi3/llama`, too.
   
   *We use a better strategy to train Bunny-v1.0-4B and Bunny-Llama-3-8B-V, which would be open-sourced soon!*
   
