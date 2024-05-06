@@ -8,7 +8,7 @@
 
 **Bunny-v1.0-3B**: 🤗 [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-3B) | 🤖 [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B) | 🧠 [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B) | 🐰 [3B Demo](https://wisemodel.cn/spaces/baai/Bunny) 
 
-**Bunny-Llama-3-8B-V**: 🤗 [HuggingFace](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V) | 🤖 [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-Llama-3-8B-V) | 🧠 [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-Llama-3-8B-V) | 🐰 [8B Demo](https://3965a2c066917e96a2.gradio.live/)
+**Bunny-Llama-3-8B-V**: 🤗 [HuggingFace](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V) | 🤖 [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-Llama-3-8B-V) | 🧠 [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-Llama-3-8B-V) | 🐰 [8B Demo](https://3965a2c066917e96a2.gradio.live/) | 🤗 [GGUF](https://huggingface.co/BoyaWu10/Bunny-Llama-3-8B-V-gguf)
 
 Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like **EVA-CLIP, SigLIP** and language backbones, including **Llama-3-8B, Phi-3-mini, Phi-1.5, StableLM-2, Qwen1.5, MiniCPM and Phi-2**. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our **Bunny-v1.0-3B** model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
 
