@@ -230,6 +230,8 @@ You may want to:
 
 3. Update Bunny local codes using `git pull`. 
 
+4. `pip install -e .`
+
 You are all set!
 </details>
 
