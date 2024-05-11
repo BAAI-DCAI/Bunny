@@ -380,7 +380,7 @@ More models will be supported in the future!
   	--model-list-mode reload
   ```
 
-  If you want to share your web server with others, use `--share` option. Note that `frpc_linux_amd64_v0.2` may be missing and you can fix it following instructions printed on the screen.
+  If you want to share your web server with others, use `--share` option. Note that `frpc_linux_amd64_v0.2` may be missing and you can fix it following instructions printed on the screen and making the file executable.
 
   ```shell
   python -m bunny.serve.gradio_web_server \
