@@ -323,7 +323,7 @@ More models will be supported in the future!
 * Data preparation
 
   We use a high-quality coreset with less duplicates and more informative samples of LAION-2B built by [this work](https://github.com/BAAI-DCAI/Dataset-Pruning/tree/main/LAION). We randomly sample 2 million image-text pairs from the coreset and convert them to training format.
-  The dataset is available [here](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data).
+  The dataset is available [here](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data).
 
 * Run
 
@@ -338,7 +338,7 @@ More models will be supported in the future!
 * Data preparation
 
   We build Bunny-695K by modifying [SVIT-mix-665K](https://arxiv.org/abs/2307.04087) for finetuning.
-  The dataset is available [here](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data).
+  The dataset is available [here](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data).
 
 * Run
 
@@ -353,6 +353,40 @@ More models will be supported in the future!
   # LoRA tuning
   sh script/train/finetune_lora.sh
   ```
+### Continuous  Fine-tuning
+
+If you want to continuously fine-tuning our released Bunny models on your data or to adapt certain task, 
+
+<details>
+<summary>expand to see the instructions.</summary>
+
+
+1. Prepare data: convert your data to a `JSON` file of a list of all samples with the format like [Bunny-695K](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data/blob/main/finetune/bunny_695k.json).
+
+2. Prepare model:
+
+   * download Bunny [models](#model-zoo) and if only LoRA provided, merge the LoRA weights and base LLM
+
+     ```shell
+     python script/merge_lora_weights.py \
+       --model-path /path/to/bunny_lora_weights \
+       --model-base /path/to/base_llm_model \
+       --model-type phi-2 (or stablelm-2 or phi-1.5 or qwen1.5-1.8b or minicpm or phi-3 or llama3-8b) \
+       --save-model-path /path/to/merged_model
+     ```
+   * add `"continuous_training": true` in `/path/to/merged_model/config.json` to ensure loading the vision tower from merged weights
+   
+
+
+3. Edit script: both `finetune_full.sh` and `finetune_lora.sh` can be used, before:
+
+   * change `model_name_or_path` to `/path/to/merged_model`
+
+   * delete `pretrain_mm_mlp_adapter` because we load the cross-modality projector from merged weights
+
+   * customize the hyperparameters, e.g. the learning rate, to fit your dataset
+
+</details>
 
 ## Demo
 
