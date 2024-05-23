@@ -15,6 +15,8 @@ class BunnyMetaModel:
 
         if hasattr(config, "mm_vision_tower"):
             self.vision_tower = build_vision_tower(config, delay_load=not getattr(config, 'continuous_training', False))
+            if getattr(config, 'continuous_training', False):
+                config.continuous_training = False
             self.mm_projector = build_vision_projector(config)
 
     def get_vision_tower(self):
