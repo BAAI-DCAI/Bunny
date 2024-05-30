@@ -346,7 +346,7 @@ More models will be supported in the future!
 
 * Run
 
-  Update `--model_name_or_path` and `--vision_tower` to the paths of the LLM and vision encoder, respectively. Update `MODEL_TYPE`, `PRETRAIN_DIR` and `OUTPUT_DIR` accordingly. The global batch size is 128. For `MODEL_TYPE = minicpm/phi-3/llama3-8b`, change `VERSION` to `minicpm/phi3/llama`, too. S$`^2`$-Wrapper would be enabled if `--use_s2 True` added.
+  Update `--model_name_or_path` and `--vision_tower` to the paths of the LLM and vision encoder, respectively. Update `MODEL_TYPE`, `PRETRAIN_DIR` and `OUTPUT_DIR` accordingly. The global batch size is 128. For `MODEL_TYPE = minicpm/phi-3/llama3-8b`, change `--version` to `minicpm/phi3/llama`, too. S$`^2`$-Wrapper would be enabled if `--use_s2 True` added.
   
   *We use a better strategy to train Phi-3-Mini-based and Llama-3-8B-based Bunny, which would be open-sourced soon!*
   
@@ -384,11 +384,13 @@ If you want to continuously fine-tuning our released Bunny models on your data o
 
 3. Edit script: both `finetune_full.sh` and `finetune_lora.sh` can be used, before:
 
-   * change `model_name_or_path` to `/path/to/merged_model`
+   * change `--model_name_or_path` to `/path/to/merged_model`
 
-   * delete `pretrain_mm_mlp_adapter` because we load the cross-modality projector from merged weights
+   * delete `--pretrain_mm_mlp_adapter` because we load the cross-modality projector from merged weights
 
    * customize the hyperparameters, e.g. the learning rate, to fit your dataset
+   
+   * for `MODEL_TYPE = minicpm/phi-3/llama3-8b`, change `--version` to `minicpm/phi3/llama`, too. S$`^2`$-Wrapper would be enabled if `--use_s2 True` added.
 
 </details>
 
