@@ -149,6 +149,7 @@ class ModelWorker:
         top_p = float(params.get("top_p", 1.0))
         max_context_length = getattr(model.config, 'max_position_embeddings', 2048)
         max_new_tokens = min(int(params.get("max_new_tokens", 256)), 1024)
+        repetition_penalty = float(params.get("repetition_penalty", 1.0))
         stop_str = params.get("stop", None)
         do_sample = True if temperature > 0.001 else False
 
@@ -176,6 +177,7 @@ class ModelWorker:
             streamer=streamer,
             stopping_criteria=[stopping_criteria],
             use_cache=True,
+            repetition_penalty=repetition_penalty,
             **image_args
         ))
         thread.start()

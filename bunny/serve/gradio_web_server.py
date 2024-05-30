@@ -183,7 +183,7 @@ def add_text(state, text, image, image_process_mode, request: gr.Request):
     return (state, state.to_gradio_chatbot(), "", None) + (disable_btn,) * 5
 
 
-def http_bot(state, model_selector, temperature, top_p, max_new_tokens, request: gr.Request):
+def http_bot(state, model_selector, temperature, top_p, max_new_tokens, repetition_penalty, request: gr.Request):
     logger.info(f"http_bot. ip: {request.client.host}")
     start_tstamp = time.time()
     model_name = model_selector
@@ -241,6 +241,7 @@ def http_bot(state, model_selector, temperature, top_p, max_new_tokens, request:
         "temperature": float(temperature),
         "top_p": float(top_p),
         "max_new_tokens": min(int(max_new_tokens), 1536),
+        "repetition_penalty": float(repetition_penalty),
         "stop": state.sep if state.sep_style in [SeparatorStyle.PLAIN, ] else state.sep2,
         "images": f'List of {len(state.get_images())} images: {all_image_hash}',
     }
@@ -374,6 +375,8 @@ def build_demo(embed_mode):
                     top_p = gr.Slider(minimum=0.0, maximum=1.0, value=0.7, step=0.1, interactive=True, label="Top P", )
                     max_output_tokens = gr.Slider(minimum=0, maximum=1024, value=512, step=64, interactive=True,
                                                   label="Max output tokens", )
+                    repetition_penalty = gr.Slider(minimum=1.0, maximum=2.0, value=1.08, step=0.01, interactive=True,
+                                                   label="Repetition penalty", )
 
                 file_output = gr.components.File(label="Download Document", visible=True, elem_id="file-downloader")
             with gr.Column(scale=8):
@@ -420,7 +423,7 @@ def build_demo(embed_mode):
             queue=False
         ).then(
             http_bot,
-            [state, model_selector, temperature, top_p, max_output_tokens],
+            [state, model_selector, temperature, top_p, max_output_tokens, repetition_penalty],
             [state, chatbot] + btn_list
         )
 
@@ -444,7 +447,7 @@ def build_demo(embed_mode):
             queue=False
         ).then(
             http_bot,
-            [state, model_selector, temperature, top_p, max_output_tokens],
+            [state, model_selector, temperature, top_p, max_output_tokens, repetition_penalty],
             [state, chatbot] + btn_list
         )
 
@@ -455,7 +458,7 @@ def build_demo(embed_mode):
             queue=False
         ).then(
             http_bot,
-            [state, model_selector, temperature, top_p, max_output_tokens],
+            [state, model_selector, temperature, top_p, max_output_tokens, repetition_penalty],
             [state, chatbot] + btn_list
         )
 

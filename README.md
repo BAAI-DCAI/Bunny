@@ -4,7 +4,7 @@
   <img src="./icon.png" alt="Logo" width="350">
 </p>
 
-📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Data](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) | 🤖 [Data](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data) | 🐰 Demo [Bunny-3B](https://wisemodel.cn/spaces/baai/Bunny), [Others](http://bunny.dataoptim.org)
+📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Data](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) | 🤖 [Data](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data) | 🐰 [Demo](http://bunny.dataoptim.org)
 
 **Bunny-v1.0-3B**: 🤗 [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-3B) | 🤖 [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B) | 🧠 [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B)
 
@@ -99,7 +99,9 @@ output_ids = model.generate(
     input_ids,
     images=image_tensor,
     max_new_tokens=100,
-    use_cache=True)[0]
+    use_cache=True,
+    repetition_penalty=1.0 # increase this to avoid chattering
+)[0]
 
 print(tokenizer.decode(output_ids[input_ids.shape[1]:], skip_special_tokens=True).strip())
 ```
@@ -167,7 +169,9 @@ output_ids = model.generate(
     input_ids,
     images=image_tensor,
     max_new_tokens=100,
-    use_cache=True)[0]
+    use_cache=True,
+    repetition_penalty=1.0 # increase this to avoid chattering
+)[0]
 
 print(tokenizer.decode(output_ids[input_ids.shape[1]:], skip_special_tokens=True).strip())
 ```
@@ -502,6 +506,8 @@ For CLI-based inference without using the Gradio interface, use the following co
   	--image-file /path/to/the/test/image \
   	--conv-mode bunny (change to minicpm/phi3/llama for model-type = minicpm/phi-3/llama3-8b)
   ```
+
+You can also control `temperature`, `repetition-penalty` and `max-new-tokens`.
 
 ## Evaluation
 
