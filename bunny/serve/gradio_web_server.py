@@ -24,7 +24,7 @@ enable_btn = gr.update(interactive=True)
 disable_btn = gr.update(interactive=False)
 
 priority = {
-    "Bunny-Llama-3-8B-V": "a",
+    "Bunny-v1.1-Llama-3-8B-V": "a",
     "Bunny-v1.1-4B": "b",
     "Bunny-v1.0-3B": "c",
 }
@@ -194,7 +194,8 @@ def http_bot(state, model_selector, temperature, top_p, max_new_tokens, repetiti
         return
 
     if len(state.messages) == state.offset + 2:
-        if 'llama3-8b' in model_selector.lower() or model_selector == 'Bunny-Llama-3-8B-V':
+        if 'llama3-8b' in model_selector.lower() or model_selector in {'Bunny-Llama-3-8B-V', 'Bunny-v1_1-Llama-3-8B-V',
+                                                                       'Bunny-v1.1-Llama-3-8B-V'}:
             conv_mode = "llama"
         elif 'phi-3' in model_selector.lower() or model_selector in {'Bunny-v1_0-4B', 'Bunny-v1.0-4B', 'Bunny-v1_1-4B',
                                                                      'Bunny-v1.1-4B'}:
@@ -301,7 +302,7 @@ def http_bot(state, model_selector, temperature, top_p, max_new_tokens, repetiti
 title_markdown = ("""
 # 🐰 Bunny: A family of lightweight multimodal models
 
-[📖 [Technical report](https://arxiv.org/abs/2402.11530)] | [🏠 [Code](https://github.com/BAAI-DCAI/Bunny)] | [🤗 [Bunny-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V)] | [🤗 [Bunny-v1.1-4B](https://huggingface.co/BAAI/Bunny-v1_1-4B)] | [🤗 [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B)]
+[📖 [Technical report](https://arxiv.org/abs/2402.11530)] | [🏠 [Code](https://github.com/BAAI-DCAI/Bunny)] | [🤗 [Bunny-v1.1-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V)] | [🤗 [Bunny-v1.1-4B](https://huggingface.co/BAAI/Bunny-v1_1-4B)] | [🤗 [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B)]
 
 """)
 
