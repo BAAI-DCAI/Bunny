@@ -8,11 +8,11 @@
 
 **Bunny-v1.0-3B**: 🤗 [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-3B) | 🤖 [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B) | 🧠 [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B)
 
-**Bunny-Llama-3-8B-V**: 🤗 [HuggingFace](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V) | 🤖 [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-Llama-3-8B-V) | 🧠 [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-Llama-3-8B-V) | 🤗 [GGUF](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V-gguf)
+**Bunny-Llama-3-8B-V**: 🤗 [v1.1](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V) | 🤗 [v1.0](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V) | 🤗 [v1.0-GGUF](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V-gguf)
 
 Bunny is a family of lightweight but powerful multimodal models. It offers multiple plug-and-play vision encoders, like **EVA-CLIP, SigLIP** and language backbones, including **Llama-3-8B, Phi-3-mini, Phi-1.5, StableLM-2, Qwen1.5, MiniCPM and Phi-2**. To compensate for the decrease in model size, we construct more informative training data by curated selection from a broader data source. Remarkably, our **Bunny-v1.0-3B** model built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with 13B models.
 
-Moreover, we are thrilled to introduce **Bunny-Llama-3-8B-V**, the pioneering vision-language model based on Llama-3, showcasing exceptional performance.
+Moreover, we are thrilled to introduce **Bunny-Llama-3-8B-V**, the pioneering vision-language model based on Llama-3, showcasing exceptional performance. The v1.1 version accepts high-resolution images up to 1152x1152.
 
 ![comparison_8B](comparison_8B.png)
 
@@ -24,17 +24,19 @@ Moreover, we are thrilled to introduce **Bunny-Llama-3-8B-V**, the pioneering vi
 
 ## News and Updates
 
+* 2024.06.01 🔥 **Bunny-v1.1-Llama-3-8B-V, supporting 1152x1152 resolution, is released!** It is built upon SigLIP and Llama-3-8B-Instruct with S$`^2`$-Wrapper. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V)! 🐰 [Demo](http://bunny.dataoptim.org)
+
 * 2024.05.08 🔥 **Bunny-v1.1-4B, supporting 1152x1152 resolution, is released!** It is built upon SigLIP and Phi-3-Mini-4K 3.8B with S$`^2`$-Wrapper. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_1-4B)! 🐰 [Demo](http://bunny.dataoptim.org)
 
 * 2024.05.01 🔥 **Bunny-v1.0-4B, a vision-language model based on Phi-3, is released!** It is built upon SigLIP and Phi-3-Mini-4K 3.8B. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-4B)! 🤗 [GGUF](https://huggingface.co/BAAI/Bunny-v1_0-4B-gguf)
 
-* 2024.04.21 🔥 **Bunny-Llama-3-8B-V, the first vision-language model based on Llama-3, is released!** It is built upon SigLIP and Llama-3-8B-Instruct. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V), [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-Llama-3-8B-V), and [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-Llama-3-8B-V)! 🐰 [Demo](http://bunny.dataoptim.org) 🤗 [GGUF](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V-gguf)
+* 2024.04.21 🔥 **Bunny-Llama-3-8B-V, the first vision-language model based on Llama-3, is released!** It is built upon SigLIP and Llama-3-8B-Instruct. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V), [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-Llama-3-8B-V), and [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-Llama-3-8B-V)! 🤗 [GGUF](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V-gguf)
 
 * 2024.04.18 🔥 **Bunny-v1.0-3B-zh, powerful on English and Chinese, is released!** It is built upon SigLIP and MiniCPM-2B. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-3B-zh), [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B-zh/summary), and [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B-zh)! The evaluation results are in the [Model Zoo](#model-zoo). We sincerely thank Zhenwei Shao for his kind help.
 
-* 2024.03.15 🔥 **Bunny-v1.0-2B-zh, focusing on Chinese, is released!** It is built upon SigLIP and Qwen1.5-1.8B. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh), [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-2B-zh/summary), and [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-2B-zh)! The evaluation results are in the [Model Zoo](#model-zoo).
+* 2024.03.15 **Bunny-v1.0-2B-zh, focusing on Chinese, is released!** It is built upon SigLIP and Qwen1.5-1.8B. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-2B-zh), [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-2B-zh/summary), and [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-2B-zh)! The evaluation results are in the [Model Zoo](#model-zoo).
 
-* 2024.03.06 🔥 **Bunny training data is released!** Check more details about Bunny-v1.0-data in [HuggingFace](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) or [ModelScope](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data)!
+* 2024.03.06 **Bunny training data is released!** Check more details about Bunny-v1.0-data in [HuggingFace](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) or [ModelScope](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data)!
 * 2024.02.20 **Bunny technical report is ready!** Check more details about Bunny [here](https://arxiv.org/abs/2402.11530)!
 * 2024.02.07 **Bunny is released!** Bunny-v1.0-3B built upon SigLIP and Phi-2 outperforms the state-of-the-art MLLMs, not only in comparison with models of similar size but also against larger MLLMs (7B), and even achieves performance on par with LLaVA-13B!
 
@@ -42,7 +44,7 @@ Moreover, we are thrilled to introduce **Bunny-Llama-3-8B-V**, the pioneering vi
 
 ### HuggingFace transformers
 
-Here we show a code snippet to show you how to use [Bunny-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V), [Bunny-v1.1-4B](https://huggingface.co/BAAI/Bunny-v1_1-4B), [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) and so on with HuggingFace transformers.
+Here we show a code snippet to show you how to use [Bunny-v1.1-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V), [Bunny-v1.1-4B](https://huggingface.co/BAAI/Bunny-v1_1-4B), [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) and so on with HuggingFace transformers.
 
 Before running the snippet, you need to install the following dependencies:
 
@@ -70,8 +72,8 @@ warnings.filterwarnings('ignore')
 device = 'cuda'  # or cpu
 torch.set_default_device(device)
 
-model_name = 'BAAI/Bunny-Llama-3-8B-V' # or 'BAAI/Bunny-v1_1-4B' or 'BAAI/Bunny-v1_0-4B' or 'BAAI/Bunny-v1_0-3B' or 'BAAI/Bunny-v1_0-3B-zh' or 'BAAI/Bunny-v1_0-2B-zh'
-offset_bos = 1 # for Bunny-Llama-3-8B-V, Bunny-v1_1-4B, Bunny-v1_0-4B and Bunny-v1_0-3B-zh
+model_name = 'BAAI/Bunny-v1_1-Llama-3-8B-V' # or 'BAAI/Bunny-Llama-3-8B-V' or 'BAAI/Bunny-v1_1-4B' or 'BAAI/Bunny-v1_0-4B' or 'BAAI/Bunny-v1_0-3B' or 'BAAI/Bunny-v1_0-3B-zh' or 'BAAI/Bunny-v1_0-2B-zh'
+offset_bos = 1 # for Bunny-v1_1-Llama-3-8B-V, Bunny-Llama-3-8B-V, Bunny-v1_1-4B, Bunny-v1_0-4B and Bunny-v1_0-3B-zh
 # offset_bos = 0 for Bunny-v1_0-3B and Bunny-v1_0-2B-zh
 
 # create model
@@ -90,7 +92,7 @@ text = f"A chat between a curious user and an artificial intelligence assistant.
 text_chunks = [tokenizer(chunk).input_ids for chunk in text.split('<image>')]
 input_ids = torch.tensor(text_chunks[0] + [-200] + text_chunks[1][offset_bos:], dtype=torch.long).unsqueeze(0).to(device)
 
-# image, sample images can be found in https://huggingface.co/BAAI/Bunny-Llama-3-8B-V/tree/main/images
+# image, sample images can be found in https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V/tree/main/images
 image = Image.open('example_2.png')
 image_tensor = model.process_images([image], model.config).to(dtype=model.dtype, device=device)
 
@@ -194,7 +196,8 @@ print(tokenizer.decode(output_ids[input_ids.shape[1]:], skip_special_tokens=True
 | **[Bunny-v1.0-3B/bunny-phi-2-siglip](https://huggingface.co/BAAI/Bunny-v1_0-3B)** |      1488.8      |      289.3      |       69.2/68.6       |       -       | 62.5/- | 38.2/33.0 | 79.8 |       62.5       |       70.9       | 86.8 |
 | [Bunny-v1.0-4B](https://huggingface.co/BAAI/Bunny-v1_0-4B) |      1495.2      |      338.9      |       74.0/73.5       |       -       | 64.5/72.1 | 40.1/39.1 | 81.5 |       63.5       |       75.1       | 86.7 |
 | **[Bunny-v1.1-4B](https://huggingface.co/BAAI/Bunny-v1_1-4B)** |      1503.9      |      362.9      |       74.1/74.1       |       66.3/64.8       | 64.6/71.7 | 40.2/38.8 | 81.7 |       63.4       |       76.3       | 87.0 |
-| **[Bunny-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V)** |      1588.9      |      321.1      |       77.2/76.7       |       73.8/72.3       | 65.9/73.3 | 42.8/39.0 | 82.6 |       64.8       |       80.4       | 86.9 |
+| [Bunny-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V) |      1588.9      |      321.1      |       77.2/76.7       |       73.8/72.3       | 65.9/73.3 | 42.8/39.0 | 82.6 |       64.8       |       80.4       | 86.9 |
+| **[Bunny-1.1-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V)** |      1607.8      |      324.6      |       76.5/76.3       |       73.4/73.5       | 65.9/73.6 | 43.7/38.8 | 82.3 |       64.5       |       80.4       | 87.4 |
 
 The small model with the best performance is denoted as Bunny-v1.0-3B or bunny-phi-2-siglip, whose merged weights can be found [here](https://huggingface.co/BAAI/Bunny-v1_0-3B) and the LoRA weights can be found [here](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora).
 
@@ -214,8 +217,8 @@ We also provide two models that focus on Chinese QA ability, namely Bunny-v1.0-3
 | **[bunny-phi-2-siglip-lora](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora)** | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [microsoft/phi-2](https://huggingface.co/microsoft/phi-2)    |    5e-4     | [bunny-pretrain-phi-2-siglip](https://huggingface.co/BAAI/bunny-pretrain-phi-2-siglip) |
 | Bunny-v1.0-4B                                            | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [microsoft/Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct) |    1e-3     | [bunny-pretrain-phi-3-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-3-siglip) |
 | **Bunny-v1.1-4B**                                            | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [microsoft/Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct) |    1e-3     | [bunny-pretrain-phi-3-siglip-s2](https://huggingface.co/BoyaWu10/bunny-pretrain-phi-3-siglip-s2) |
-| **Bunny-Llama-3-8B-V**                                       | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [meta-llama/Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |    1e-3     | [bunny-pretrain-llama3-8b-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-llama3-8b-siglip) |
-
+| Bunny-Llama-3-8B-V                                       | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [meta-llama/Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |    1e-3     | [bunny-pretrain-llama3-8b-siglip](https://huggingface.co/BoyaWu10/bunny-pretrain-llama3-8b-siglip) |
+| **Bunny-v1.1-Llama-3-8B-V**                                       | [siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) | [meta-llama/Meta-Llama-3-8B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |    1e-3     | [bunny-pretrain-llama3-8b-siglip-s2](https://huggingface.co/BoyaWu10/bunny-pretrain-llama3-8b-siglip-s2) |
 
 ## Install
 Either start from our docker or install locally on your own. 
