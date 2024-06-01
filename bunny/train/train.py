@@ -231,6 +231,7 @@ def train():
         tokenizer.pad_token = tokenizer.unk_token
 
     if model_args.model_type == 'llama3-8b':
+        tokenizer.eos_token_id = 128001
         tokenizer.pad_token = tokenizer.eos_token
 
     if model_args.model_type == 'phi-1.5' or model_args.model_type == 'phi-2':
@@ -269,6 +270,8 @@ def train():
         model = BunnyLlamaForCausalLM.from_pretrained(
             model_args.model_name_or_path,
             cache_dir=training_args.cache_dir,
+            bos_token_id=tokenizer.bos_token_id,
+            eos_token_id=tokenizer.eos_token_id,
             **bnb_model_from_pretrained_args
         )
     else:

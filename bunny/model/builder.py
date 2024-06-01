@@ -187,7 +187,9 @@ def load_pretrained_model(model_path, model_base, model_name, model_type, load_8
     else:
         context_len = 2048
 
-    if model_type == 'phi-3':
+    if model_type == 'llama3-8b':
+        tokenizer.eos_token_id = 128001
+    if model_type in {'llama3-8b', 'phi-3'}:
         model.generation_config.eos_token_id = tokenizer.eos_token_id
 
     if model.generation_config.pad_token_id is None:
