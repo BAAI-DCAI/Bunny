@@ -46,7 +46,7 @@ The response file can be found in `eval/seed-bench/answers_upload` and the score
 ## MMMU
 
 1. Refer to [MMMU HuggingFace](https://huggingface.co/datasets/MMMU/MMMU) to download the benchmark dataset and put `MMMU` under `eval/mmmu`.
-2. Update `SPLIT`, `MODEL_TYPE` and `TARGET_DIR` accordingly.
+2. Update `SPLIT`, `MODEL_TYPE` and `TARGET_DIR` accordingly. You may add `--small-gpu-usage` to avoid `CUDA out of memory`.
 
 ```shell
 CUDA_VISIBLE_DEVICES=0 sh script/eval/full/mmmu.sh
