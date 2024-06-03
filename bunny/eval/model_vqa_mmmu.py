@@ -126,10 +126,10 @@ def call_bunny_engine_df(args, sample, model, tokenizer=None, processor=None):
         output_ids = model.generate(
             input_ids,
             images=image.unsqueeze(0).to(dtype=model.dtype, device='cuda', non_blocking=True),
-            do_sample=True,
-            temperature=1,
+            do_sample=False,
+            temperature=0,
             top_p=None,
-            num_beams=5,
+            # num_beams=5,
             max_new_tokens=128,
             use_cache=True)
 
