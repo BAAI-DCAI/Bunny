@@ -75,6 +75,26 @@ python eval/mmmu/eval_mmmu.py \
 
 For test set, you can submit the `json` response file to [submission_link](https://eval.ai/web/challenges/challenge-page/2179/overview) to obtain the evaluation scores.
 
+## CMMMU
+
+1. Refer to [CMMMU HuggingFace](https://huggingface.co/datasets/m-a-p/CMMMU) to download the benchmark dataset and put `CMMMU` under `eval/cmmmu`.
+2. Update `SPLIT`, `MODEL_TYPE`, `MODEL_BASE` and `TARGET_DIR` accordingly. You may add `--small-gpu-usage` to avoid `CUDA out of memory`.
+
+```shell
+CUDA_VISIBLE_DEVICES=0 sh script/eval/lora/cmmmu.sh
+```
+
+The response file can be found in `eval/cmmmu/answers_upload`.
+
+For validation set, you can use `eval_script.py` to obtain the scores.
+
+```shell
+python eval/cmmmu/eval_script.py \
+	--output_path ./eval/cmmmu/answers_upload/$SPLIT/$TARGET_DIR.jsonl
+```
+
+For test set, you can submit the `jsonl` response file to [submission_link](https://eval.ai/web/challenges/challenge-page/2217/overview) to obtain the evaluation scores.
+
 ## VQAv2
 1. Download [COCO 2015 Test images](http://images.cocodataset.org/zips/test2015.zip) and put `test2015` under `eval/vqav2`. Then:
 

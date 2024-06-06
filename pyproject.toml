@@ -16,7 +16,7 @@ dependencies = [
     'accelerate', 'apex', 'bitsandbytes', 'datasets', 'deepspeed', 'einops', 'einops-exts',
     'fastapi', 'flash_attn', 'gradio', 'gradio_client', 'httpx', 'markdown2', 'numpy', 'openpyxl',
     'peft', 'protobuf', 'pydantic', 'pypandoc', 'requests', 'scikit-learn', 'sentencepiece', 'shortuuid',
-    'timm', 'tiktoken', 'tokenizers', 'torch', 'torchvision', 'transformers', 'uvicorn', 'xformers'
+    'tabulate', 'timm', 'tiktoken', 'tokenizers', 'torch', 'torchvision', 'transformers', 'uvicorn', 'xformers'
 ]
 
 
