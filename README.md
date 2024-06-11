@@ -4,7 +4,7 @@
   <img src="./icon.png" alt="Logo" width="350">
 </p>
 
-📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Data](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) | 🤖 [Data](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data) | 🐰 [Demo](http://bunny.dataoptim.org)
+📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Data](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) | 🤖 [Data](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data) | 🐰 [Demo](http://bunny.baai.ac.cn)
 
 **Bunny-v1.0-3B**: 🤗 [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-3B) | 🤖 [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B) | 🧠 [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B)
 
@@ -24,9 +24,9 @@ Moreover, we are thrilled to introduce **Bunny-Llama-3-8B-V**, the pioneering vi
 
 ## News and Updates
 
-* 2024.06.01 🔥 **Bunny-v1.1-Llama-3-8B-V, supporting 1152x1152 resolution, is released!** It is built upon SigLIP and Llama-3-8B-Instruct with S$`^2`$-Wrapper. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V)! 🐰 [Demo](http://bunny.dataoptim.org)
+* 2024.06.01 🔥 **Bunny-v1.1-Llama-3-8B-V, supporting 1152x1152 resolution, is released!** It is built upon SigLIP and Llama-3-8B-Instruct with S$`^2`$-Wrapper. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V)! 🐰 [Demo](http://bunny.baai.ac.cn)
 
-* 2024.05.08 🔥 **Bunny-v1.1-4B, supporting 1152x1152 resolution, is released!** It is built upon SigLIP and Phi-3-Mini-4K 3.8B with S$`^2`$-Wrapper. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_1-4B)! 🐰 [Demo](http://bunny.dataoptim.org)
+* 2024.05.08 🔥 **Bunny-v1.1-4B, supporting 1152x1152 resolution, is released!** It is built upon SigLIP and Phi-3-Mini-4K 3.8B with S$`^2`$-Wrapper. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_1-4B)! 🐰 [Demo](http://bunny.baai.ac.cn)
 
 * 2024.05.01 🔥 **Bunny-v1.0-4B, a vision-language model based on Phi-3, is released!** It is built upon SigLIP and Phi-3-Mini-4K 3.8B. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-4B)! 🤗 [GGUF](https://huggingface.co/BAAI/Bunny-v1_0-4B-gguf)
 
