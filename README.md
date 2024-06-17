@@ -197,7 +197,7 @@ print(tokenizer.decode(output_ids[input_ids.shape[1]:], skip_special_tokens=True
 | [Bunny-v1.0-4B](https://huggingface.co/BAAI/Bunny-v1_0-4B) |      1495.2      |      338.9      |       74.0/73.5       |       -       | 64.5/72.1 | 40.1/39.1 | 81.5 |       63.5       |       75.1       | 86.7 |
 | **[Bunny-v1.1-4B](https://huggingface.co/BAAI/Bunny-v1_1-4B)** |      1503.9      |      362.9      |       74.1/74.1       |       66.3/64.8       | 64.6/71.7 | 40.2/38.8 | 81.7 |       63.4       |       76.3       | 87.0 |
 | [Bunny-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-Llama-3-8B-V) |      1588.9      |      321.1      |       77.2/76.7       |       73.8/72.3       | 65.9/73.3 | 42.8/39.0 | 82.6 |       64.8       |       80.4       | 86.9 |
-| **[Bunny-1.1-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V)** |      1607.8      |      324.6      |       76.5/76.3       |       73.4/73.5       | 65.9/73.6 | 43.7/38.8 | 82.3 |       64.5       |       80.4       | 87.4 |
+| **[Bunny-1.1-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V)** |      1644.1      |      367.5      |       78.1/77.2       |       74.3/74.8       | 66.2/73.5 | 42.0/39.1 | 82.9 |       64.0       |       79.9       | 87.2 |
 
 The small model with the best performance is denoted as Bunny-v1.0-3B or bunny-phi-2-siglip, whose merged weights can be found [here](https://huggingface.co/BAAI/Bunny-v1_0-3B) and the LoRA weights can be found [here](https://huggingface.co/BAAI/bunny-phi-2-siglip-lora).
 
