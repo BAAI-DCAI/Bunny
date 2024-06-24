@@ -9,7 +9,7 @@ from bunny.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
 from bunny.conversation import conv_templates, SeparatorStyle
 from bunny.model.builder import load_pretrained_model
 from bunny.util.utils import disable_torch_init
-from bunny.util.mm_utils import tokenizer_image_token, get_model_name_from_path
+from bunny.util.mm_utils import tokenizer_image_token, get_model_name_from_path, process_images
 
 from PIL import Image
 import math
@@ -55,7 +55,7 @@ def eval_model(args):
         input_ids = tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda()
 
         image = Image.open(os.path.join(args.image_folder, image_file))
-        image_tensor = image_processor.preprocess(image, return_tensors='pt')['pixel_values'][0]
+        image_tensor = process_images([image], image_processor, model.config)[0]
 
         stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
 

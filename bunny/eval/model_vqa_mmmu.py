@@ -11,7 +11,7 @@ from datasets import load_dataset, concatenate_datasets
 from argparse import ArgumentParser
 
 from bunny.model.builder import load_pretrained_model
-from bunny.util.mm_utils import get_model_name_from_path, tokenizer_image_token
+from bunny.util.mm_utils import get_model_name_from_path, tokenizer_image_token, process_images
 from bunny.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
 from bunny.conversation import conv_templates
 
@@ -305,10 +305,10 @@ def main():
 
         sample = construct_prompt(sample, args.config)
         if sample['image']:
-            if args.small_gpu_usage:
-                sample['image'] = vis_processors.preprocess(sample['image'].convert('RGB'), return_tensors='pt')['pixel_values'][0]
-            else:
-                sample['image'] = vis_processors.preprocess(sample['image'].convert('RGB'), return_tensors='pt')['pixel_values'][0].to(device)
+            sample['image'] = process_images([sample['image'].convert('RGB')], vis_processors, model.config)[0]
+
+            if not args.small_gpu_usage:
+                sample['image'] = sample['image'].to(device)
 
         samples.append(sample)
 
