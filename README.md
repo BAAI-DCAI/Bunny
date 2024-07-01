@@ -4,7 +4,7 @@
   <img src="./icon.png" alt="Logo" width="350">
 </p>
 
-📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 [Data](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data) | 🤖 Data ([v1.0](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data), [v1.1](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.1-data)) | 🐰 [Demo](http://bunny.baai.ac.cn)
+📖 [Technical report](https://arxiv.org/abs/2402.11530) | 🤗 Data ([v1.0](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_0-data), [v1.1](https://huggingface.co/datasets/BoyaWu10/Bunny-v1_1-data)) | 🤖 Data ([v1.0](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.0-data), [v1.1](https://www.modelscope.cn/datasets/BoyaWu10/Bunny-v1.1-data)) | 🐰 [Demo](http://bunny.baai.ac.cn)
 
 **Bunny-v1.0-3B**: 🤗 [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_0-3B) | 🤖 [ModelScope](https://www.modelscope.cn/models/BAAI/Bunny-v1.0-3B) | 🧠 [wisemodel](https://wisemodel.cn/models/BAAI/Bunny-v1.0-3B)
 
