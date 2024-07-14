@@ -47,6 +47,8 @@ Moreover, we are thrilled to introduce **Bunny-Llama-3-8B-V**, the pioneering vi
 
 Here we show a code snippet to show you how to use [Bunny-v1.1-Llama-3-8B-V](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V), [Bunny-v1.1-4B](https://huggingface.co/BAAI/Bunny-v1_1-4B), [Bunny-v1.0-3B](https://huggingface.co/BAAI/Bunny-v1_0-3B) and so on with HuggingFace transformers.
 
+This snippet is only used for above models because we **manually** combine some configuration code into a single file for users' convenience. For example, you can check [`modeling_bunny_llama.py`](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V/blob/main/modeling_bunny_llama.py) and [`configuration_bunny_llama.py`](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V/blob/main/configuration_bunny_llama.py) and their related parts in the source code of Bunny to see the difference. For other models including models trained by yourself, we **recommend** loading them with installing the source code of Bunny. Or you can copy files like [`modeling_bunny_llama.py`](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V/blob/main/modeling_bunny_llama.py) and [`configuration_bunny_llama.py`](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V/blob/main/configuration_bunny_llama.py) into your model and modify `auto_map` in `config.json`, but we can't guarantee its correctness and you may need to modify some code to fit your model.
+
 Before running the snippet, you need to install the following dependencies:
 
 ```shell
