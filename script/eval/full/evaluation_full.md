@@ -146,3 +146,7 @@ CUDA_VISIBLE_DEVICES=0 sh script/eval/full/mmvet.sh
 
 The response file can be found in `eval/mm-vet/answers_upload`. You can submit the `json` response file to [submission link](https://huggingface.co/spaces/whyu/MM-Vet_Evaluator) to obtain the evaluation scores.
 
+## SpatialBench
+SpatialBench is proposed in [SpatialBot](https://github.com/BAAI-DCAI/SpatialBot). It tests models' performance on spatial understanding and reasoning.
+1. Download dataset in [HuggingFace](https://huggingface.co/datasets/RussRobin/SpatialBench).
+2. Please refer to [SpatialBot GitHub](https://github.com/BAAI-DCAI/SpatialBot/blob/main/script/eval/lora/evaluation_lora.md) for evaluation codes.

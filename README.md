@@ -23,6 +23,7 @@ Moreover, we are thrilled to introduce **Bunny-Llama-3-8B-V**, the pioneering vi
 
 
 ## News and Updates
+* 2024.07.21 🔥 **SpatialBot, SpatialQA and SpatialBench are released!** SpatialBot is an embodiment model that comprehends spatial relationships by understanding and using depth information. Try model, dataset and benchmark at [GitHub](https://github.com/BAAI-DCAI/SpatialBot)!
 
 * 2024.06.20 🔥 **MMR benchmark is released!** It is a benchmark for measuring MLLMs' understanding ability and their robustness against misleading questions. Check the performance of Bunny and more details in [GitHub](https://github.com/BAAI-DCAI/Multimodal-Robustness-Benchmark)!
 * 2024.06.01 🔥 **Bunny-v1.1-Llama-3-8B-V, supporting 1152x1152 resolution, is released!** It is built upon SigLIP and Llama-3-8B-Instruct with S$`^2`$-Wrapper. Check more details in [HuggingFace](https://huggingface.co/BAAI/Bunny-v1_1-Llama-3-8B-V)! 🐰 [Demo](http://bunny.baai.ac.cn)
