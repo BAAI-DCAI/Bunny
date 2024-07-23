@@ -156,7 +156,7 @@ deepspeed bunny/train/train.py \
   python script/merge_lora_weights.py \
     --model-path ./checkpoints-llama3-8b/bunny-lora-llama3-8b-recipe-1 \
     --model-base /path/to/meta-llama/Meta-Llama-3-8B-Instruct \
-    --model-type llama3-8b
+    --model-type llama3-8b \
     --save-model-path ./checkpoints-llama3-8b/bunny-llama3-8b-recipe-1
   ```
 
@@ -164,7 +164,7 @@ deepspeed bunny/train/train.py \
   python script/merge_lora_weights.py \
     --model-path ./checkpoints-llama3-8b/bunny-lora-llama3-8b-recipe-2 \
     --model-base /path/to/meta-llama/Meta-Llama-3-8B-Instruct \
-    --model-type llama3-8b
+    --model-type llama3-8b \
     --save-model-path ./checkpoints-llama3-8b/bunny-llama3-8b-recipe-2
   ```
 

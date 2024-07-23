@@ -153,7 +153,7 @@ deepspeed bunny/train/train.py \
   python script/merge_lora_weights.py \
     --model-path ./checkpoints-phi-3/bunny-lora-phi-3-recipe-1 \
     --model-base /path/to/microsoft/Phi-3-mini-4k-instruct \
-    --model-type phi-3
+    --model-type phi-3 \
     --save-model-path ./checkpoints-phi-3/bunny-phi-3-recipe-1
   ```
 
@@ -161,7 +161,7 @@ deepspeed bunny/train/train.py \
   python script/merge_lora_weights.py \
     --model-path ./checkpoints-phi-3/bunny-lora-phi-3-recipe-2 \
     --model-base /path/to/microsoft/Phi-3-mini-4k-instruct \
-    --model-type phi-3
+    --model-type phi-3 \
     --save-model-path ./checkpoints-phi-3/bunny-phi-3-recipe-2
   ```
 
