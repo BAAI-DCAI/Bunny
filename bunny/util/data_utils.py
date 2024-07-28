@@ -258,8 +258,15 @@ def preprocess(
 
     if conversation_lib.default_conversation.version == "bunny":
         return preprocess_bunny(sources, tokenizer, has_image=has_image)
-    elif conversation_lib.default_conversation.version in {"minicpm", "llama", "phi3"}:
+    elif conversation_lib.default_conversation.version in {"minicpm", "llama"}:
         return preprocess_bunny_with_bos(sources, tokenizer, has_image=has_image)
+    # temporarily fix
+    # Phi-3 June 2024 Update changes bos_token behavior
+    elif conversation_lib.default_conversation.version == "phi3":
+        if len(tokenizer('').input_ids) == 0:
+            return preprocess_bunny(sources, tokenizer, has_image=has_image)
+        else:
+            return preprocess_bunny_with_bos(sources, tokenizer, has_image=has_image)
 
 
 class LazySupervisedDataset(Dataset):
