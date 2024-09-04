@@ -20,6 +20,8 @@ class SiglipVisionTower(nn.Module):
             self.cfg_only = SiglipVisionConfig.from_pretrained(self.vision_tower_name)
 
     def load_model(self):
+        if self.is_loaded:
+            return
         self.image_processor = SiglipImageProcessor.from_pretrained(self.vision_tower_name)
         self.image_processor.crop_size = self.image_processor.size
         self.vision_tower = SiglipVisionModel.from_pretrained(self.vision_tower_name)

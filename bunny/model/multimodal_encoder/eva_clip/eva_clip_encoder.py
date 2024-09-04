@@ -20,6 +20,8 @@ class EvaClipVisionTower(nn.Module):
             self.cfg_only = self.config
 
     def load_model(self):
+        if self.is_loaded:
+            return
         self.image_processor = EvaClipImageTrainProcessor(self.config.image_size)
         self.vision_tower = Eva2LargePlusEncoder(self.vision_tower_path)
         self.vision_tower.requires_grad_(False)
