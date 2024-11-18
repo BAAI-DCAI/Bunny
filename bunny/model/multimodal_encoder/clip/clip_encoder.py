@@ -34,7 +34,6 @@ class CLIPVisionTower(nn.Module):
 
         return image_features
 
-    @torch.no_grad()
     def forward(self, images):
         if type(images) is list:
             image_features = []
