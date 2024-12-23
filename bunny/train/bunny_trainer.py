@@ -29,6 +29,15 @@ def get_mm_adapter_state_maybe_zero_3(named_params, keys_to_match):
     return to_return
 
 
+def get_peft_state_non_lora_maybe_zero_3(named_params, require_grad_only=True):
+    """Returns non-lora peft state."""
+    to_return = {k: t for k, t in named_params if "lora_" not in k}
+    if require_grad_only:
+        to_return = {k: t for k, t in to_return.items() if t.requires_grad}
+    to_return = {k: maybe_zero_3(v, ignore_status=True).cpu() for k, v in to_return.items()}
+    return to_return
+
+
 def split_to_even_chunks(indices, lengths, num_chunks):
     """
     Split a list of indices into `chunks` chunks of roughly equal lengths.
@@ -249,6 +258,14 @@ class BunnyTrainer(Trainer):
                 torch.save(weight_to_save, os.path.join(output_dir, f'mm_projector.bin'))
         else:
             super(BunnyTrainer, self)._save_checkpoint(model, trial, metrics)
+
+        # Save non-lora peft state
+        if getattr(self.args, 'lora_enable', False):
+            non_lora_state_dict = get_peft_state_non_lora_maybe_zero_3(
+                self.model.named_parameters()
+            )
+            if self.args.local_rank == 0 or self.args.local_rank == -1:
+                torch.save(non_lora_state_dict, os.path.join(output_dir, 'non_lora_trainables.bin'))
 
     def _save(self, output_dir: Optional[str] = None, state_dict=None):
         if getattr(self.args, 'tune_mm_mlp_adapter', False):
